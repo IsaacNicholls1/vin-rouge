@@ -92,3 +92,18 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+def south_west(request):
+    return render(request, 'regions/south_west.html')
+
+def wine_review_2(request):
+    return render(request, 'wine_reviews/review_2.html')
+
+def wine_review_3(request):
+    return render(request, 'wine_reviews/review_3.html')
+
+def wine_review_4(request):
+    return render(request, 'wine_reviews/review_4.html')
+
+def wine_review_5(request):
+    return render(request, 'wine_reviews/review_5.html')
