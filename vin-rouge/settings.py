@@ -30,9 +30,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'vin-rouge-994dc71a02b9.herokuapp.com' ,'.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'vin-rouge-994dc71a02b9.herokuapp.com' ,'.herokuapp.com']
 
 
 # Application definition
@@ -117,6 +117,7 @@ if 'test' in sys.argv:
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
     "https://*.herokuapp.com"
+    "http://127.0.0.1:8000"
 ]
 
 # Password validation

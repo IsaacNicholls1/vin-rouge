@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from blog import views  # Adjust the import path according to your project structure
 
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
@@ -23,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path("", include("blog.urls"), name="blog-urls"),
+    path('south-west/', views.south_west, name='south_west'),
+    
 ]

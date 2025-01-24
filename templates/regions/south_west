@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-
-
-
-<h1>Wine Review 1</h1>
-<p>Details about Wine Review 1.</p>
-
-{% endblock %}

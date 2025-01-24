@@ -10,11 +10,7 @@ body {
 }
 
 .red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
+    color: #330835;
 }
 
 .light-bg {
@@ -30,8 +26,8 @@ body {
 }
 
 .card {
-    border: none;
-    background-color: transparent;
+    border: solid 3px #000000;
+    background-color: #632C33;
 }
 
 .image-container {

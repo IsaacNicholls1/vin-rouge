@@ -94,7 +94,7 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 def south_west(request):
-    return render(request, 'regions/south_west.html')
+    return render(request, 'south_west.html')
 
 def wine_review_2(request):
     return render(request, 'wine_reviews/review_2.html')
@@ -107,3 +107,6 @@ def wine_review_4(request):
 
 def wine_review_5(request):
     return render(request, 'wine_reviews/review_5.html')
+
+def index(request):
+    return render(request, 'blog/index.html')

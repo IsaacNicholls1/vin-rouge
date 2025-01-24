@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 STATUS = ((0, "Draft"), (1, "Published"))
 
 """
-Post model - to store blog posts
+Review model - to store wine reviews
 """
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
