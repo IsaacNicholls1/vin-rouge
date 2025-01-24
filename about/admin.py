@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About, CollaborateRequest
+from .models import About, NewsletterRequest
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -14,7 +14,7 @@ class AboutAdmin(SummernoteModelAdmin):
 #       own projects, then inherit from admin.ModelAdmin like
 #       we do below.
 
-@admin.register(CollaborateRequest)
-class CollaborateRequestAdmin(admin.ModelAdmin):
+@admin.register(NewsletterRequest)
+class NewsletterRequestAdmin(admin.ModelAdmin):
 
-    list_display = ('message', 'read',)
+    list_display = ('read',)

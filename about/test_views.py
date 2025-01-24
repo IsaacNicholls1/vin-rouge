@@ -13,4 +13,4 @@ def test_successful_collaboration_request_submission(self):
     response = self.client.post(reverse('about'), post_data)
     self.assertEqual(response.status_code, 200)
     self.assertIn(
-        b'Collaboration request received! I endeavour to respond within 2 working days.', response.content)
+        b'Newsletter request received, it will be with you within 3 working days!', response.content)

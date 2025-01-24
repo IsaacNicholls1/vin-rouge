@@ -1,8 +1,8 @@
-from .models import CollaborateRequest
+from .models import NewsletterRequest
 from django import forms
 
 
-class CollaborateForm(forms.ModelForm):
+class NewsletterForm(forms.ModelForm):
     class Meta:
-        model = CollaborateRequest
-        fields = ('name', 'email', 'message')
+        model = NewsletterRequest
+        fields = ('name', 'email')
