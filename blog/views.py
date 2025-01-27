@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .models import Review, Comment
-from .forms import CommentForm
+from .forms import CommentForm, ReviewForm
 
 
 class IndexView(View):
@@ -15,10 +17,22 @@ def index(request):
     return render(request, 'index.html', {'posts': posts})
     
 # Create your views here.
-class ReviewList(generic.ListView):
-    queryset = Review.objects.filter(status=1)
-    template_name = "blog/review_list.html"
-    paginate_by = 6
+class ReviewList(View):
+    def get(self, request, *args, **kwargs):
+        reviews = Review.objects.filter(status=1).order_by('-created_on')
+        form = ReviewForm()
+        return render(request, 'blog/review_list.html', {'reviews': reviews, 'form': form})
+
+    @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = request.user
+            review.save()
+            return redirect('home')
+        reviews = Review.objects.filter(status=1).order_by('-created_on')
+        return render(request, 'blog/review_list.html', {'reviews': reviews, 'form': form})
 
 
 def post_detail(request, slug):

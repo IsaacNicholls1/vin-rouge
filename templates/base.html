@@ -34,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Vin R<span class="red-o">o</span>uge</span></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><span class="brand">Vin R<span class="red-o">o</span>uge</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">Home</a>
+                            href="{% url 'reviewpage' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link
@@ -101,7 +101,7 @@
                         <div class="card-body">
                             <h5 class="card-title">South - West</h5>
                             <p class="card-text">Key Regions: Bordeaux, Cahors, Madiran</p>
-                            <a href="{% url 'south_west' %}" class="btn btn-primary">Leave a review</a>
+                            <a href="{% url 'reviewpage' %}" class="btn btn-primary">Leave a review</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Southeast France</h5>
                             <p class="card-text">Description for Wine Review 2.</p>
-                            <a href="{% url 'wine_review_2' %}" class="btn btn-primary">Read More</a>
+                            <a href="{% url 'reviewpage' %}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Wine Review 3</h5>
                             <p class="card-text">Description for Wine Review 3.</p>
-                            <a href="{% url 'wine_review_3' %}" class="btn btn-primary">Read More</a>
+                            <a href="{% url 'reviewpage' %}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Wine Review 4</h5>
                             <p class="card-text">Description for Wine Review 4.</p>
-                            <a href="{% url 'wine_review_4' %}" class="btn btn-primary">Read More</a>
+                            <a href="{% url 'reviewpage' %}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Wine Review 5</h5>
                             <p class="card-text">Description for Wine Review 5.</p>
-                            <a href="{% url 'wine_review_5' %}" class="btn btn-primary">Read More</a>
+                            <a href="{% url 'reviewpage' %}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
