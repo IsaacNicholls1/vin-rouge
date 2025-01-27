@@ -155,3 +155,21 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+.circular-card {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 400px; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.circular-card img {
+    border-radius: 50%;
+    width: 50%;
+    height: auto;
+}

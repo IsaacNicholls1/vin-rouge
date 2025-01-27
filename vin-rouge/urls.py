@@ -16,14 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from blog import views  # Adjust the import path according to your project structure
+from blog.views import IndexView
 
 urlpatterns = [
     path("about/", include("about.urls"), name="about-urls"),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path("", include("blog.urls"), name="blog-urls"),
-    path('blog/south_west', include('blog.urls'))
-    
+    path('', IndexView.as_view(), name='index'),  # Add this line to include the index view at the root
+    path('blog/', include('blog.urls')),  # Move blog URLs to a separate path
 ]
