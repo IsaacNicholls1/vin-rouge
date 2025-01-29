@@ -9,17 +9,24 @@ STATUS = ((0, "Draft"), (1, "Published"))
 Review model - to store wine reviews
 """
 class Review(models.Model):
+    REGION_CHOICES = [
+        ('southwest', 'Southwest'),
+        ('northwest', 'Northwest'),
+        ('northeast', 'Northeast'),
+        ('southeast', 'Southeast'),
+        ('central', 'Central'),
+    ]
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="review_posts"
     )
     featured_image = CloudinaryField('image', default='placeholder')
-    region = models.CharField(max_length=200, default='Bordeaux')
+    region = models.CharField(max_length=200, choices=REGION_CHOICES, default='southwest')
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:

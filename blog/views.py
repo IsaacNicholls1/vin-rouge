@@ -20,13 +20,17 @@ def index(request):
 # Create your views here.
 class ReviewList(View):
     def get(self, request, *args, **kwargs):
-        reviews = Review.objects.filter(status=1).order_by('-created_on')
-        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
+        region = request.GET.get('region', 'all')
+        if region == 'all':
+            reviews = Review.objects.filter(status=1).order_by('-created_on')
+        else:
+            reviews = Review.objects.filter(status=1, region=region).order_by('-created_on')
 
+        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         form = ReviewForm()
-        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form})
+        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form, 'region': region})
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):

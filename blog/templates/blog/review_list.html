@@ -4,6 +4,20 @@
 {% block content %}
 <h1 class="page-title text-center my-4">Your Wonderful Wines!</h1>
 <div class="container mt-5">
+    <form method="get" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <select name="region" class="form-select" onchange="this.form.submit()">
+                    <option value="all" {% if region == 'all' %}selected{% endif %}>All Regions</option>
+                    <option value="southwest" {% if region == 'southwest' %}selected{% endif %}>Southwest</option>
+                    <option value="northwest" {% if region == 'northwest' %}selected{% endif %}>Northwest</option>
+                    <option value="northeast" {% if region == 'northeast' %}selected{% endif %}>Northeast</option>
+                    <option value="southeast" {% if region == 'southeast' %}selected{% endif %}>Southeast</option>
+                    <option value="central" {% if region == 'central' %}selected{% endif %}>Central</option>
+                </select>
+            </div>
+        </div>
+    </form>
     <div class="row">
         {% for review in page_obj %}
         <div class="col-md-4 mb-4">
@@ -21,8 +35,8 @@
     <div class="pagination mt-4">
         <span class="step-links">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                <a href="?page=1&region={{ region }}">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}&region={{ region }}">previous</a>
             {% endif %}
 
             <span class="current">
@@ -30,8 +44,8 @@
             </span>
 
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}&region={{ region }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&region={{ region }}">last &raquo;</a>
             {% endif %}
         </span>
     </div>
