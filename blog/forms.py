@@ -7,13 +7,13 @@ from .models import Review
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['title', 'slug', 'featured_image', 'content', 'excerpt', 'status']
+        fields = ['title', 'featured_image', 'content',]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.add_input(Submit('submit', 'Submit for Review'))
 
 
 class CommentForm(forms.ModelForm):

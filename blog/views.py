@@ -14,7 +14,7 @@ class IndexView(View):
     
 def index(request):
     posts = Review.objects.filter(status=1)
-    return render(request, 'index.html', {'posts': posts})
+    return render(request, 'blog/index.html', {'posts': posts})
     
 # Create your views here.
 class ReviewList(View):
@@ -30,7 +30,7 @@ class ReviewList(View):
             review = form.save(commit=False)
             review.author = request.user
             review.save()
-            return redirect('home')
+            return redirect('index')
         reviews = Review.objects.filter(status=1).order_by('-created_on')
         return render(request, 'blog/review_list.html', {'reviews': reviews, 'form': form})
 

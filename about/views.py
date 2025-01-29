@@ -6,7 +6,7 @@ from .forms import NewsletterForm
 
 def about_me(request):
     """
-    Renders the most recent info on the website author, and allows users to request collaboration.
+    Renders the most recent info on the website author, and allows users to request A newsletter.
     Displays an instance of :model:`about.About`.
     """
 
