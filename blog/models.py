@@ -14,7 +14,8 @@ class Review(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="review_posts"
     )
-    featured_image = CloudinaryField('image', default='redwine')
+    featured_image = CloudinaryField('image', default='placeholder')
+    region = models.CharField(max_length=200, default='Bordeaux')
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

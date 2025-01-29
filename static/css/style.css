@@ -28,6 +28,7 @@ body {
 .card {
     border: solid 3px #000000;
     background-color: #632C33;
+    margin-bottom: 20px;
 }
 
 .image-container {
@@ -186,4 +187,39 @@ hero-image {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-} 
+}
+
+.container {
+    padding: 20px;
+}
+
+.page-title {
+    margin-bottom: 20px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination .step-links a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.pagination .step-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination .current {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
