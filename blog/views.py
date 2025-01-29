@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.paginator import Paginator
 from .models import Review, Comment
 from .forms import CommentForm, ReviewForm
 
@@ -20,8 +21,12 @@ def index(request):
 class ReviewList(View):
     def get(self, request, *args, **kwargs):
         reviews = Review.objects.filter(status=1).order_by('-created_on')
+        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
         form = ReviewForm()
-        return render(request, 'blog/review_list.html', {'reviews': reviews, 'form': form})
+        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form})
 
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
@@ -32,7 +37,11 @@ class ReviewList(View):
             review.save()
             return redirect('index')
         reviews = Review.objects.filter(status=1).order_by('-created_on')
-        return render(request, 'blog/review_list.html', {'reviews': reviews, 'form': form})
+        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form})
 
 
 def post_detail(request, slug):
