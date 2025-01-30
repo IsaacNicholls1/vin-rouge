@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
-from .models import Review, Comment
+from .models import Review, Comment, Wine
 from .forms import CommentForm, ReviewForm
 
 
@@ -24,7 +24,7 @@ class ReviewList(View):
         if region == 'all':
             reviews = Review.objects.filter(status=1).order_by('-created_on')
         else:
-            reviews = Review.objects.filter(status=1, region=region).order_by('-created_on')
+            reviews = Review.objects.filter(status=1, wine__region__name=region).order_by('-created_on')
 
         paginator = Paginator(reviews, 5)  # Show 5 reviews per page
         page_number = request.GET.get('page')
@@ -32,14 +32,13 @@ class ReviewList(View):
         form = ReviewForm()
         return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form, 'region': region})
 
-    @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             review = form.save(commit=False)
             review.author = request.user
             review.save()
-            return redirect('index')
+            return redirect('review_list')
         reviews = Review.objects.filter(status=1).order_by('-created_on')
         paginator = Paginator(reviews, 5)  # Show 5 reviews per page
 
@@ -60,6 +59,7 @@ def post_detail(request, slug):
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.review = review
+            comment.wine = review.wine  # Ensure the wine field is set
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,
