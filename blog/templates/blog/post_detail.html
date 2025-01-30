@@ -85,7 +85,7 @@
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post">
                     {% csrf_token %}
-                    {{ form|crispy }}
+                    {{ form | crispy }}
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
                 {% else %}
