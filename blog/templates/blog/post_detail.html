@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+<!-- {% load crispy_forms_tags %} -->
 
 {% block content %}
 <div class="masthead">
@@ -85,7 +85,7 @@
                 <p>Posting as: {{ user.username }}</p>
                 <form method="post">
                     {% csrf_token %}
-                    {{ form | crispy }}
+                    {{ form }}
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
                 {% else %}
