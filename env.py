@@ -1,7 +1,8 @@
 import os
 
 os.environ.setdefault(
-    "DATABASE_URL", "postgresql://neondb_owner:vL5SZWbYs9AG@ep-orange-silence-a2sjm8ph.eu-central-1.aws.neon.tech/frill_item_mower_708754")
+    "DATABASE_URL", "postgresql://neondb_owner:npg_GDQHjxw97AnS@ep-soft-wildflower-a2o1ouzz.eu-central-1.aws.neon.tech/pluck_curve_yelp_979423")
+
 os.environ.setdefault("SECRET_KEY", "pontypridd1989")
 
 os.environ.setdefault(
