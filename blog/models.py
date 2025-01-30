@@ -7,27 +7,21 @@ from django.db.models.signals import pre_save
 STATUS = ((0, "Draft"), (1, "Published"))
 RATING = ((1, "1🍷"), (2, "2🍷"), (3, "3🍷"), (4, "4🍷"), (5, "5🍷"))
 
-class Region(models.Model):
-    REGION_CHOICES = [
-        ('southwest', 'Southwest'),
-        ('northwest', 'Northwest'),
-        ('northeast', 'Northeast'),
-        ('southeast', 'Southeast'),
-        ('central', 'Central'),
-    ]
-    
-    name = models.CharField(max_length=100, choices=REGION_CHOICES)
-
-    def __str__(self):
-        return self.name
 
 class Wine(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     name = models.CharField(max_length=100)
-    region = models.ForeignKey(Region, related_name='wine_posts', on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wines")
     maker = models.CharField(max_length=100)
+    REGION_CHOICES = (
+        ('Bordeaux', 'Bordeaux'),
+        ('Burgundy', 'Burgundy'),
+        ('NorthWest', 'NorthWest'),
+        ('South East', 'South East'),
+        ('Central', 'Central'),
+    )
+    region = models.CharField(max_length=100, choices=REGION_CHOICES)
     vintage = models.IntegerField()
     grape = models.CharField(max_length=100)
     description = models.TextField()
@@ -42,7 +36,6 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="review_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="reviewed_wine")
-    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name="review_posts")
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField()
     rating = models.IntegerField(choices=RATING, default=None)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Region, Wine, Review, Comment
+from .models import Wine, Review, Comment
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
@@ -14,7 +14,6 @@ class ReviewAdmin(SummernoteModelAdmin):
 # Register your models here.
 admin.site.register(Comment)
 admin.site.register(Wine)
-admin.site.register(Region)
 
 
 
