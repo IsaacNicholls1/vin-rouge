@@ -59,7 +59,6 @@ def post_detail(request, slug):
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.review = review
-            comment.wine = review.wine  # Ensure the wine field is set
             comment.save()
             messages.add_message(
                 request, messages.SUCCESS,

@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
+from django.db.models.signals import pre_save
 
 STATUS = ((0, "Draft"), (1, "Published"))
+RATING = ((1, "1🍷"), (2, "2🍷"), (3, "3🍷"), (4, "4🍷"), (5, "5🍷"))
 
 class Region(models.Model):
     REGION_CHOICES = [
@@ -14,34 +17,35 @@ class Region(models.Model):
     ]
     
     name = models.CharField(max_length=100, choices=REGION_CHOICES)
-    slug = models.SlugField(max_length=100, unique=True)
 
     def __str__(self):
         return self.name
 
 class Wine(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(unique=True, blank=True)
     name = models.CharField(max_length=100)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name="region_posts")
+    region = models.ForeignKey(Region, related_name='wine_posts', on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wines")
     maker = models.CharField(max_length=100)
     vintage = models.IntegerField()
     grape = models.CharField(max_length=100)
     description = models.TextField()
     featured_image = CloudinaryField('image', default='redwine')
-    slug = models.SlugField(unique=True, default='default-slug')
 
     def __str__(self):
         return self.name
 
 class Review(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="review_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="reviewed_wine")
+    region = models.ForeignKey(Region, on_delete=models.CASCADE, related_name="review_posts")
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField()
-    rating = models.IntegerField(default=0, choices=[(i, i) for i in range(1, 6)])
+    rating = models.IntegerField(choices=RATING, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -58,6 +62,7 @@ class Comment(models.Model):
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=200, default="Default Title")
 
     class Meta:
         ordering = ['created_on']

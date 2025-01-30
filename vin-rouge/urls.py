@@ -19,10 +19,9 @@ from django.urls import path, include
 from blog.views import IndexView
 
 urlpatterns = [
-    path("about/", include("about.urls"), name="about-urls"),
-    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
+    path('about/', include('about.urls')),
+    path('accounts/', include('allauth.urls')),
     path('summernote/', include('django_summernote.urls')),
-    path('', IndexView.as_view(), name='index'),  # Add this line to include the index view at the root
-    path('blog/', include('blog.urls')),  # Move blog URLs to a separate path
+    path('', include('blog.urls')),
 ]

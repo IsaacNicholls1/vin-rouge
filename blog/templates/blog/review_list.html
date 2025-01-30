@@ -19,6 +19,7 @@
         </div>
     </form>
     <div class="row">
+        {% if page_obj %}
         {% for review in page_obj %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
@@ -28,8 +29,10 @@
                     <a href="{% url 'post_detail' slug=review.slug %}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
-        </div>
         {% endfor %}
+        {% else %}
+        <p>No reviews available.</p>
+        {% endif %}
     </div>
 
     <div class="pagination mt-4">
