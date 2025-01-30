@@ -1,114 +1,100 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.views import generic, View
+from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.core.paginator import Paginator
-from .models import Review, Comment, Wine
+from .models import Review, Comment
 from .forms import CommentForm, ReviewForm
 
 
-class IndexView(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'blog/index.html')
-    
-def index(request):
-    posts = Review.objects.filter(status=1)
-    return render(request, 'blog/index.html', {'posts': posts})
-    
-# Create your views here.
-class ReviewList(View):
-    def get(self, request, *args, **kwargs):
-        reviews = Review.objects.filter(status=1).order_by('-created_on')
-        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        form = ReviewForm()
-        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form, 'reviews': reviews})
+class IndexView(generic.ListView):
+    template_name = "blog/index.html"
+    context_object_name = "latest_reviews"
 
-    def post(self, request, *args, **kwargs):
-        form = ReviewForm(request.POST, request.FILES)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.author = request.user
-            review.save()
-            return redirect('review_list')
-        reviews = Review.objects.filter(status=1).order_by('-created_on')
-        paginator = Paginator(reviews, 5)  # Show 5 reviews per page
+    def get_queryset(self):
+        return Review.objects.filter(status=1).order_by("-created_on")[:3]
 
-        page_number = request.GET.get('page')
-        page_obj = paginator.get_page(page_number)
-        return render(request, 'blog/review_list.html', {'page_obj': page_obj, 'form': form})
+class ReviewList(generic.ListView):
+    queryset = Review.objects.filter(status=1)
+    template_name = "blog/index.html"
+    paginate_by = 6
 
 
 def post_detail(request, slug):
     queryset = Review.objects.filter(status=1)
-    review = get_object_or_404(queryset, slug=slug)
-    comments = review.comments.all().order_by("-created_on")
-    comment_count = review.comments.filter(approved=True).count()
-
+    post = get_object_or_404(queryset, slug=slug)
+    user_reviews = post.user_reviews.all().order_by("-created_on")
+    user_review_count = post.user_reviews.filter(approved=True).count()
     if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.review = review
-            comment.save()
+        user_review_form = CommentForm(data=request.POST)
+        if user_review_form.is_valid():
+            user_review = user_review_form.save(commit=False)
+            user_review.reviewer = request.user
+            user_review.location = post
+            user_review.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                'Comment submitted and awaiting approval'
-            )
-            return redirect('post_detail', slug=review.slug)
-    else:
-        comment_form = CommentForm()
+                'Your Wine review has been submitted for approval!🐕')
+
+    user_review_form = CommentForm()
 
     return render(
         request,
         "blog/post_detail.html",
         {
-            "review": review,
-            "comments": comments,
-            "comment_count": comment_count,
-            "comment_form": comment_form,
+            "post": post,
+            "user_reviews": user_reviews,
+            "user_review_count": user_review_count,
+            "user_review_form": user_review_form,
         },
     )
 
-def comment_edit(request, slug, comment_id):
+
+# ----- Editing reviews
+
+
+def user_review_edit(request, slug, user_review_id):
     queryset = Review.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    comment = get_object_or_404(Comment, pk=comment_id)
-
-    if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST, instance=comment)
-        if comment_form.is_valid():
-            comment_form.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+    user_review = get_object_or_404(Comment, pk=user_review_id)
+    user_review_form = CommentForm(data=request.POST, instance=user_review)
+    if request.method == "POST":
+        if user_review_form.is_valid() and user_review.reviewer == request.user:
+            user_review = user_review_form.save(commit=False)
+            user_review.location = post
+            user_review.approved = False
+            user_review.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Wine review updated!' 
+                'Close this tab and refresh to see your updated review')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating your wine review...')
+    context = {
+        "post": post,
+        "user_review": user_review,
+        "user_review_form": user_review_form,
+    }
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-    else:
-        comment_form = CommentForm(instance=comment)
+    return render(request, "blog/edit_user_reviews.html", context)
 
-    return render(
-        request,
-        'blog/comment_edit.html',
-        {
-            'comment_form': comment_form,
-            'post': post,
-        },
-    )
 
-def comment_delete(request, slug, comment_id):
+    # ----- Deleting reviews
+
+
+def user_review_delete(request, slug, user_review_id):
+    """
+    view to delete user review
+    """
     queryset = Review.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    comment = get_object_or_404(Comment, pk=comment_id)
+    user_review = get_object_or_404(Comment, pk=user_review_id)
 
-    if comment.author == request.user:
-        comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+    if user_review.reviewer == request.user:
+        user_review.delete()
+        messages.add_message(request, messages.SUCCESS, 'Review deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own reviews!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
