@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -32,7 +32,20 @@ class WineDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["reviews"] = Review.objects.filter(wine=self.object)
+        context["review_form"] = ReviewForm()
         return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.author = request.user
+            review.wine = self.object
+            review.save()
+            messages.success(request, "Your review has been submitted!")
+            return redirect('wine_detail', slug=self.object.slug)
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class ReviewList(generic.ListView):
