@@ -2,20 +2,42 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Review, Comment
+from .models import Review, Comment, Wine
 from .forms import CommentForm, ReviewForm
 
 
-class IndexView(generic.ListView):
-    template_name = "blog/index.html"
-    context_object_name = "latest_reviews"
+#index view
+def index(request):
+    return render(request, 'blog/index.html')
 
-    def get_queryset(self):
-        return Review.objects.filter(status=1).order_by("-created_on")[:3]
+def review_list(request):
+    reviews = Review.objects.filter(status=1).order_by("-created_on")
+    return render(request, "blog/review_list.html", {"reviews": reviews})
+
+# def wine_list(request):
+#     wines = Wine.objects.all()
+#     return render(request, 'blog/wine_list.html', {'wines': wines})    
+
+class WineList(generic.ListView):
+    model = Wine
+    template_name = "blog/wine_list.html"
+    context_object_name = "wines"
+    # paginate_by = 6
+
+class WineDetail(generic.DetailView):
+    model = Wine
+    template_name = "blog/wine_detail.html"
+    context_object_name = "wine"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["reviews"] = Review.objects.filter(wine=self.object)
+        return context
+
 
 class ReviewList(generic.ListView):
     queryset = Review.objects.filter(status=1)
-    template_name = "blog/index.html"
+    template_name = "blog/review_list.html"
     paginate_by = 6
 
 

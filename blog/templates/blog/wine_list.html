@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title text-center my-4">Our Wines</h1>
+<div class="container-fluid">
+    <div class="row">
+        {% for wine in wines %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ wine.featured_image.url }}" class="card-img-top" alt="{{ wine.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ wine.name }}</h5>
+                    <p class="card-text">{{ wine.description|truncatewords:20 }}</p>
+                    <a href="{% url 'wine_detail' slug=wine.slug %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

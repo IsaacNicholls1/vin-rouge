@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <!-- Review goes in these h1 tags -->
+                <h1 class="review-title">{{ wine.title }}: {{ wine.name }}</h1>
+                <!-- Review author goes before the | the review created date goes after -->
+                <p class="review-subtitle">{{ review.author }} | {{ review.created_on }}</p>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                {% if "redwine" in post.featured_image.url %}
+                <img src="{% static 'images/vineyard.jpg ' %}" class="scale" alt="placeholder image">
+                {% else %}
+                <img src="{{ review.featured_image.url }}" class="scale" alt="{{ review.title }}">
+                {% endif %}
+                <img src="{% static 'images/vineyard.jpg' %}" class="scale" alt="placeholder">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for review in reviews %}
+        <div class="col card mb-4 mt-3 left top">
+            <div class="card-body">
+                <!-- The Review content goes inside the card-text. -->
+                <p class="card-text">
+                    <strong>{{ review.title }}</strong>
+                    <br>
+                    {{ review.content | safe }}
+                    <br>
+                    {{ review.rating }} out of 5 🍷
+                    <br>
+                    <small>By {{ review.author }} on {{ review.created_on }}</small>
+                    <br>
+                    <img src="{{ review.featured_image.url }}" alt="{{ review.title }}" class="img-fluid mt-2">
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}

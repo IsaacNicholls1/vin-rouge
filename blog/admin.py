@@ -2,8 +2,8 @@ from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Wine, Review, Comment
 
-@admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
+    model = Review
     list_display = ('title', 'slug', 'wine', 'status', 'created_on',)
     search_fields = ['title', 'content']
     list_filter = ('status', 'created_on',)
@@ -14,6 +14,7 @@ class ReviewAdmin(SummernoteModelAdmin):
 # Register your models here.
 admin.site.register(Comment)
 admin.site.register(Wine)
+admin.site.register(Review, ReviewAdmin)
 
 
 

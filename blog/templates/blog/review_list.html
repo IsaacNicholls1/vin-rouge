@@ -2,44 +2,59 @@
 
 {% block content %}
 <h1 class="page-title text-center my-4">Your Wonderful Wines!</h1>
-<div class="container mt-5">
+<div class="container-fluid">
     <div class="row">
-        {% for review in page_obj %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="{{ review.featured_image.url }}" class="card-img-top" alt="{{ review.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ review.title }}</h5>
-                    <a href="{% url 'post_detail' slug=review.slug %}" class="btn btn-primary">Read More</a>
+
+
+        <!-- Wine Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for review in review_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <div class="image-flash">
+                                </div>
+                            </div>
+                            <a href="{% url 'post_detail' slug=wine.slug %}" class="btn btn-primary">Read More</a>
+                                <h2 class="card-title">title</h2>
+                            </a>
+                            <p class="card-text">excerpt</p>
+                            <hr>
+
+                        </div>
+                    </div>
                 </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
             </div>
         </div>
-        {% endfor %}
     </div>
-
-    <div class="pagination mt-4">
-        <span class="step-links">
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            </li>
             {% endif %}
-
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
             {% endif %}
-        </span>
-    </div>
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 
-<h2 class="mt-5">Leave a Review</h2>
+<!-- <h2 class="mt-5">Leave a Review</h2>
 <form method="post">
     {% csrf_token %}
     {{ form }}
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
+</form> -->
 {% endblock %}

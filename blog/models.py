@@ -11,7 +11,7 @@ RATING = ((1, "1🍷"), (2, "2🍷"), (3, "3🍷"), (4, "4🍷"), (5, "5🍷"))
 class Wine(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True, blank=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True, default="wine-name")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wines")
     maker = models.CharField(max_length=100)
     REGION_CHOICES = (
@@ -30,12 +30,13 @@ class Wine(models.Model):
     def __str__(self):
         return self.name
 
+
 class Review(models.Model):
+    wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="reviewed_wine")
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="review_posts")
     featured_image = CloudinaryField('image', default='placeholder')
-    wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="reviewed_wine")
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField()
     rating = models.IntegerField(choices=RATING, default=None)
@@ -47,6 +48,7 @@ class Review(models.Model):
     
     def __str__(self):
         return f'{self.wine} - {self.rating}/5'
+    
 
 class Comment(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="comments")

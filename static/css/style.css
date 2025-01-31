@@ -3,14 +3,10 @@ body {
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: "Libre Baskerville", serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
-}
-
-.red-o {
-    color: #330835;
 }
 
 .light-bg {
@@ -52,6 +48,51 @@ body {
     color: white;
     margin: 4px;
     text-transform: uppercase;
+}
+
+/* General styling for the hero section */
+.index {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Styling for the logo image */
+.index .logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Styling for the main title */
+.index .main-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Styling for the tagline */
+.index .tagline {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Styling for the main description */
+.index .main-description {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.6;
 }
 
 .masthead {
@@ -157,31 +198,8 @@ body {
     color: rgb(222, 146, 168);
 }
 
-.circular-card {
-    border-radius: 50%;
-    overflow: hidden;
-    width: 400px; /* Adjust the width as needed */
-    height: 300px; /* Adjust the height as needed */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.circular-card img {
-    border-radius: 50%;
-    width: 50%;
-    height: auto;
-}
-
-hero-image {
-    width: 100%;
-    height: auto;
-    color: thistle;
-}
-
 .ReviewForm {
+    font-family: "Libre Baskerville", serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,4 +240,73 @@ hero-image {
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f8f9fa;
+}
+
+/* Carousel container */
+#carousel {
+    margin-top: 20px;
+}
+
+/* Carousel item */
+.carousel-item {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Carousel image */
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Carousel card */
+.carousel-item .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.carousel-item .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel card body */
+.carousel-item .card-body {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+/* Carousel card title */
+.carousel-item .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Carousel card text */
+.carousel-item .card-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Carousel control icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* Carousel control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
 }
