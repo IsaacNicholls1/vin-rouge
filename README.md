@@ -562,11 +562,12 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 # Use of AI #
 
-User Cases and Reflections:
-Throughout this project, I extensively utilised GitHub Copilot to enhance development and streamline testing. As this was my first experience with AI tools on such a scale, I found Copilot to be an invaluable collaborator throughout the entire process.
+
+
 
 ## Co-Pilot
 
+- Throughout this project, I extensively utilised Copilot to enhance development and streamline testing. As this was my first experience with AI tools on such a scale, I found Copilot to be an invaluable collaborator throughout the entire process.
 - Using Copilot throughout this project has been invaluable in several ways. Copilot has provided detailed, step-by-step guidance, which has been crucial in resolving technical issues related to Django migrations and database schema.
 - It has also offered design feedback, helping to ensure that the review form on the wine detail page is both user-friendly and visually appealing.
 
@@ -579,7 +580,7 @@ Throughout this project, I extensively utilised GitHub Copilot to enhance develo
 
 - Throughout the project's development, Copilot also served as an invaluable debugging and problem-solving tool. Whether I encountered specific error messages or stumbled upon unexpected issues, Copilot provided insightful suggestions that greatly expedited the troubleshooting process. Its ability to offer solutions, based on context, helped me overcome roadblocks efficiently, saving me both time and effort.
 
-- GitHub Copilot significantly contributed to the development of my site's front end by providing efficient code suggestions and auto-completions, which streamlined the implementation of interactive features and responsive design elements.
+- Copilot significantly contributed to the development of my site's front end by providing efficient code suggestions and auto-completions, which streamlined the implementation of interactive features and responsive design elements.
 
 - Copilot's ability to generate ideas and offer alternative solutions has fostered continuous improvement, making the development process more efficient and effective. Overall, Copilot's support has significantly contributed to the project's success by enhancing both the technical and user experience aspects.
 - I found it very useful overall and saved me a great deal of time, however I found when using it, it needed a close eye kept on it as it sometimes adds in extra closing tags and code that is sometimes not needed. 
@@ -589,7 +590,7 @@ Throughout this project, I extensively utilised GitHub Copilot to enhance develo
 - - - -
 
 # Future features #
-- If we had more time, we would have liked to add in an additional feature for the games, which would have been able to show  the score of the player in relation to the top and highest scores of others as a leaderboard, for each game. 
+- 
 - Search bar
 - Pop up modal home
 - Filters wine page
