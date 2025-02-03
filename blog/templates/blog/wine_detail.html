@@ -78,7 +78,7 @@
       <div class="col-md-8 post-card mb-4 mt-3 user-reviews">
         <h3>Your thoughts</h3>
         <div class="post-card-body">
-          {% for user_review in user_reviews %}
+          {% for user_review in wine_detail %}
           <div class="p-2 user_reviews
                     {% if not user_review.approved and user_review.reviewer == user %}
                     faded{% elif not user_review.approved %} d-none{% endif %}">

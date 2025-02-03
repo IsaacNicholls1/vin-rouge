@@ -55,9 +55,8 @@ class Review(models.Model):
     
 
 class Comment(models.Model):
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="comments")
-    slug = models.SlugField(unique=True, blank=True)
     title = models.CharField(max_length=200, default="Default Title")
+    slug = models.SlugField(unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_author")
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="comments_wine")
     body = models.TextField()
