@@ -6,15 +6,10 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <h1 class="review-title">{{ wine.title }}: {{ wine.name }}</h1>
-                <!-- <p class="review-subtitle">{{ wine.author }} | {{ wine.created_on }}</p> -->
+                <h1 class="review-title">{{ wine.title }}</h1>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- {% if "redwine" in wine.featured_image.url %} -->
-                <img src="{% static 'images/vineyard.jpg ' %}" class="scale" alt="placeholder image">
-                <!-- {% else %}
-                <img src="{{ wine.featured_image.url }}" class="scale" alt="{{ wine.title }}">
-                {% endif %} -->
+                <img src="{% static 'images/vineyard.jpg' %}" class="scale" alt="Vineyard">
             </div>
         </div>
     </div>
@@ -22,30 +17,123 @@
 
 <div class="container">
     <div class="row">
-        {% for wine in wines %}
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body"> 
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <!-- The content goes inside the card-text. -->
                 <p class="card-text">
-                    <strong>{{ wine.title }}</strong>
+                    <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
                     <br>
-                    {{ wine.name }}
                     <br>
-                    {{ wine.region }}
+                    {{ wine.title | safe }}
                     <br>
-                    {{ wine.vintage }}
+                    <br>
+                    Name: {{ wine.name }}
+                    <br>
+                    <br>
+                    Region: {{ wine.region }}
+                    <br>
+                    <br>
+                    Vintage: {{ wine.vintage }}
+                    <br>
                     <br>
                     {{ wine.description }}
                     <br>
-                    {{ wine.content | safe }}
+                    <br>
+                    Grape: {{ wine.grape }}
+                    <br>
                     <br>
                     {{ wine.rating }} out of 5 🍷
                     <br>
-                    <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
+                    <br>
+
                 </p>
             </div>
         </div>
-        {% endfor %}
     </div>
+
+
+<!-- Displaying count of Reviews -->
+    <div class="row">
+        <div class="col-12">
+            <strong class="text-secondary">
+                <i class="far fa-comments"></i> {{ review_count }}
+            </strong>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <!-- Displaying Reviews -->
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Comments ({{ comment_count }})</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div
+                    class="p-2 comments{% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold">
+                        {{ comment.author }}
+                        <span class="font-weight-normal">
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    <div id="comment{{ comment.id }}">
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% if not comment.approved and comment.author == user %}
+                    <p class="approval">This comment is awaiting approval</p>
+                    {% endif %}
+
+                    {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
+                    {% endif %}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Creating New Comments -->
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+                {% else %}
+                <p>You need to <a href="{% url 'account_login' %}">log in</a> to leave a comment.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you would like to delete your comment?
+                This cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
@@ -61,8 +149,8 @@
             {% endif %}
         </div>
     </div> -->
-</div>
-{% endblock %}
-{% block extras %}
-<script src="{% static 'js/comments.js' %}"></script>
-{% endblock %}
+
+    {% endblock %}
+    {% block extras %}
+    <script src="{% static 'js/comments.js' %}"></script>
+    {% endblock %}

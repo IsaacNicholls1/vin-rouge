@@ -22,59 +22,45 @@
     </div>
 
      <!-- CTA button to review pages -->
-     <div>
+    <div style="text-align: center; margin-top: 20px;"></div>
         <a class="btn-signup" href="{% url 'wine_list' %}">Start your journey now!</a>
     </div>
     
 
     <!-- Bootstrap Carousel -->
-    <h2 class="mt-5">Wines of the Month!</h2>
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <h2 class="carousel-title">Explore Our Wines of the Month!</h2>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
         <div class="carousel-inner">
-            {% for wine in wines|slice:":3" %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{ wine.image.url }}" alt="Review image">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ wine.title }}</h5>
-                            <p class="card-text">{{ wine.body }}</p>
-                            <a href="{{ post.wine_detail }}" class="btn btn-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+          <div class="carousel-item active">
+            <a href="{% url 'wine_detail' slug='chateauneuf-beauscatel' %}">
+                <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="d-block w-100">
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="{% url 'wine_detail' slug='chateauneuf-beauscatel' %}"></a>
+                <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="d-block w-100">
+            </a>
+          </div>
+          <div class="carousel-item">
+            <a href="{% url 'wine_detail' slug='chateauneuf-beauscatel' %}">
+                <img src="{{ wine. }}" alt="{{ wine.title }}" class="d-block w-100">
+            </a>
+          </div>
         </div>
-        <a class="carousel-control-prev" href="#simpleCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#simpleCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <section class="examples example-one">
-        <h5>Featured Wine</h5>
-        <img src="./static/images/featured-wine.jpg" alt="Featured Wine" class="img-fluid mb-3">
-        <p>Experience the rich flavors and aromas of our featured wine of the month. Perfect for any occasion.</p>
-    </section>
-        <img class="card-img-top" src="{{ review.image.url }}" alt="Review image">
-        <div class="card-body">
-            <h5 class="card-title">{{ review.title }}</h5>
-            <p class="card-text">{{ review.excerpt }}</p>
-            <a href="{{ review.review_list }}" class="btn btn-primary">Read More</a>
-        </div>
-    </div>
-
-
-    <div>
-        <!-- Call to Action -->
-        <a class="btn-signup" href="{% url 'account_signup' %}">Sign Up Now</a>
-
-    </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     
 
 
