@@ -10,9 +10,6 @@ from .forms import CommentForm, ReviewForm
 def index(request):
     return render(request, 'blog/index.html')
 
-def review_list(request):
-    reviews = Review.objects.filter(status=1).order_by("-created_on")
-    return render(request, "blog/review_list.html", {"reviews": reviews})
 
 # def wine_list(request):
 #     wines = Wine.objects.all()
@@ -53,9 +50,12 @@ class ReviewList(generic.ListView):
     template_name = "blog/review_list.html"
     paginate_by = 6
 
+# def review_list(request):
+#     reviews = Review.objects.filter(status=1).order_by("-created_on")
+#     return render(request, "blog/review_list.html", {"reviews": reviews})
 
 def post_detail(request, slug):
-    queryset = Wine.objects.filter(status=1)
+    queryset = post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_reviews = post.user_reviews.all().order_by("-created_on")
     user_review_count = post.user_reviews.filter(approved=True).count()
@@ -88,7 +88,7 @@ def post_detail(request, slug):
 
 
 def user_review_edit(request, slug, user_review_id):
-    queryset = Wine.objects.filter(status=1)
+    queryset = post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_review = get_object_or_404(Comment, pk=user_review_id)
     user_review_form = CommentForm(data=request.POST, instance=user_review)
@@ -121,7 +121,7 @@ def user_review_delete(request, slug, user_review_id):
     """
     view to delete user review
     """
-    queryset = Wine.objects.filter(status=1)
+    queryset = post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_review = get_object_or_404(Comment, pk=user_review_id)
 

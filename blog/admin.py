@@ -3,7 +3,6 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Wine, Review, Comment
 
 class ReviewAdmin(SummernoteModelAdmin):
-    
     list_display = ('title', 'slug', 'wine', 'status', 'created_on',)
     search_fields = ['title', 'content']
     list_filter = ('status', 'created_on',)
