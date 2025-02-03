@@ -69,32 +69,18 @@ Link to deployed and finished site: https://github.com/IsaacNicholls1/vin-rouge
 ## Project Structure
 
 ```
-/C:/GitHub/TheAiTeam/
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── images/
-│   │   └── profile/
-│   │       ├── avatar1.png
-│   │       └── avatar2.png
-│   └── js/
-│       └── main.js
-├── includes/
-│   ├── navbar.html
-│   └── footer.html
-├── index.html
-├── about.html
-├── contact.html
-├── games.html
-├── snake.html
-├── space-invaders.html
-└── pac-man.html
+Project Structure 
+
+
+
+
 ```
 # Agile Methodology
 
 ## Agile 
 - Agile methodology is "a set of methods and practices where solutions evolve through collaboration between self-organising, cross-functional teams"
 - A project board was set-up to keep track of user stories. Each user story was assigned a 'MoSCoW' prioritisation (must have, should have, could have, won't have) tag. 
+
 ## GitHub project planning
 - I used a GitHub project board to assist me in planning and carrying out tasks related to my user stories. This approach allowed me to enter all user stories into the project board, where they could be easily assigned and labeled. The GitHub project board provided a clear overview of the tasks, helping me to prioritize, organize, and track progress efficiently, ensuring that all user stories were addressed systematically and effectively. 
 
@@ -173,7 +159,7 @@ The header and footer have been kept the same throughout the site - styled simpl
 6. You now have a URL you can use to connect your app to your database.
 
 <hr>
-<p><a href="#contents">Back To Top</a></p>
+<p><a href="#contents">🍷Back To Top🍷</a></p>
 
 - - - -
 
@@ -247,7 +233,7 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 
 <hr>
-<p><a href="#contents">Back To Top</a></p>
+<p><a href="#contents">🍷Back To Top🍷</a></p>
 
 - - - -
 

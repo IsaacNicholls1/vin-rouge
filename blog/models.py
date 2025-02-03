@@ -17,9 +17,12 @@ class Wine(models.Model):
     REGION_CHOICES = (
         ('Bordeaux', 'Bordeaux'),
         ('Burgundy', 'Burgundy'),
-        ('NorthWest', 'NorthWest'),
-        ('South East', 'South East'),
-        ('Central', 'Central'),
+        ('Rhône Valley', 'Rhône Valley'),
+        ('Loire Valley', 'Loire Valley'),
+        ('Languedoc-Roussillon', 'Languedoc-Roussillon'),
+        ('Beaujolais', 'Beaujolais'),
+        ('Alsace', 'Alsace'),
+        ('Other', 'Other'),
     )
     region = models.CharField(max_length=100, choices=REGION_CHOICES)
     vintage = models.IntegerField()
