@@ -40,6 +40,13 @@ body {
     margin-bottom: 20px;
 }
 
+.btn {
+    background-color: #330835;
+    color: white;
+    display: block;
+    margin: 0 auto;
+}
+
 .image-container {
     position: relative;
 }

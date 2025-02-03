@@ -7,14 +7,14 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="review-title">{{ wine.title }}: {{ wine.name }}</h1>
-                <p class="review-subtitle">{{ wine.author }} | {{ wine.created_on }}</p>
+                <!-- <p class="review-subtitle">{{ wine.author }} | {{ wine.created_on }}</p> -->
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "redwine" in wine.featured_image.url %}
+                <!-- {% if "redwine" in wine.featured_image.url %} -->
                 <img src="{% static 'images/vineyard.jpg ' %}" class="scale" alt="placeholder image">
-                {% else %}
+                <!-- {% else %}
                 <img src="{{ wine.featured_image.url }}" class="scale" alt="{{ wine.title }}">
-                {% endif %}
+                {% endif %} -->
             </div>
         </div>
     </div>
@@ -22,26 +22,32 @@
 
 <div class="container">
     <div class="row">
-        {% for review in reviews %}
+        {% for wine in wines %}
         <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
+            <div class="card-body"> 
                 <p class="card-text">
-                    <strong>{{ review.title }}</strong>
+                    <strong>{{ wine.title }}</strong>
                     <br>
-                    {{ review.content | safe }}
+                    {{ wine.name }}
                     <br>
-                    {{ review.rating }} out of 5 🍷
+                    {{ wine.region }}
                     <br>
-                    <small>By {{ review.author }} on {{ review.created_on }}</small>
+                    {{ wine.vintage }}
                     <br>
-                    <img src="{{ review.featured_image.url }}" alt="{{ review.title }}" class="img-fluid mt-2">
+                    {{ wine.description }}
+                    <br>
+                    {{ wine.content | safe }}
+                    <br>
+                    {{ wine.rating }} out of 5 🍷
+                    <br>
+                    <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
                 </p>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h3>Leave a Review</h3>
             {% if user.is_authenticated %}
@@ -54,7 +60,7 @@
             <p>You need to <a href="{% url 'account_login' %}">log in</a> to leave a review.</p>
             {% endif %}
         </div>
-    </div>
+    </div> -->
 </div>
 {% endblock %}
 {% block extras %}

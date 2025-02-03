@@ -10,8 +10,8 @@
                 <img src="{{ wine.featured_image.url }}" class="card-img-top" alt="{{ wine.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ wine.name }}</h5>
-                    <p class="card-text">{{ wine.description|truncatewords:20 }}</p>
-                    <a href="{% url 'wine_detail' slug=wine.slug %}" class="btn btn-primary">Read More</a>
+                    <p class="card-text">{{ wine.excerpt }}</p>
+                    <a href="{% url 'wine_detail' slug=wine.slug %}" class="btn btn-primary">Read in more detail!</a>
                 </div>
             </div>
         </div>

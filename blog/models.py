@@ -29,6 +29,7 @@ class Wine(models.Model):
     grape = models.CharField(max_length=100)
     description = models.TextField()
     featured_image = CloudinaryField('image', default='redwine')
+    excerpt = models.TextField(max_length=100, default="wine-name")
 
     def __str__(self):
         return self.name
