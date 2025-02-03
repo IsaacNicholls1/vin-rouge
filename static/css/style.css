@@ -168,12 +168,19 @@ body {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    background-color: #89B181;
+    color: #000000;
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    background-color: #632C33;
+    color: #ffffff;
+}
+
+.page-link:hover {
+    background-color: #89B181;
+    color: #000000;
 }
 
 .post-title {

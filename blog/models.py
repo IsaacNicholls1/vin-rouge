@@ -56,18 +56,23 @@ class Review(models.Model):
 
 class Comment(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="comments")
+    slug = models.SlugField(unique=True, blank=True)
+    title = models.CharField(max_length=200, default="Default Title")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_author")
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="comments_wine")
     body = models.TextField()
     approved = models.BooleanField(default=False)
+    featured_image = CloudinaryField('image', default='placeholder')
+    status = models.IntegerField(choices=STATUS, default=0)
+    rating = models.IntegerField(choices=RATING, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=200, default="Default Title")
+    updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
-        return f'Comment by {self.author.username}'
+        return f'Comment by {self.author.username}. This wine - {self.wine} gets {self.rating}/5'
 
 class About(models.Model):
     title = models.CharField(max_length=200)

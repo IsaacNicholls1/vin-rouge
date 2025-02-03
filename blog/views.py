@@ -22,7 +22,7 @@ class WineList(generic.ListView):
     model = Wine
     template_name = "blog/wine_list.html"
     context_object_name = "wines"
-    # paginate_by = 6
+    paginate_by = 6
 
 class WineDetail(generic.DetailView):
     model = Wine
@@ -55,7 +55,7 @@ class ReviewList(generic.ListView):
 
 
 def post_detail(request, slug):
-    queryset = Review.objects.filter(status=1)
+    queryset = Wine.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_reviews = post.user_reviews.all().order_by("-created_on")
     user_review_count = post.user_reviews.filter(approved=True).count()
@@ -68,13 +68,13 @@ def post_detail(request, slug):
             user_review.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                'Your Wine review has been submitted for approval!🐕')
+                'Your Wine review has been submitted for approval! 🍷 ')
 
     user_review_form = CommentForm()
 
     return render(
         request,
-        "blog/post_detail.html",
+        "blog/wine_detail.html",
         {
             "post": post,
             "user_reviews": user_reviews,
@@ -88,7 +88,7 @@ def post_detail(request, slug):
 
 
 def user_review_edit(request, slug, user_review_id):
-    queryset = Review.objects.filter(status=1)
+    queryset = Wine.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_review = get_object_or_404(Comment, pk=user_review_id)
     user_review_form = CommentForm(data=request.POST, instance=user_review)
@@ -121,7 +121,7 @@ def user_review_delete(request, slug, user_review_id):
     """
     view to delete user review
     """
-    queryset = Review.objects.filter(status=1)
+    queryset = Wine.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     user_review = get_object_or_404(Comment, pk=user_review_id)
 
@@ -132,4 +132,4 @@ def user_review_delete(request, slug, user_review_id):
         messages.add_message(
             request, messages.ERROR, 'You can only delete your own reviews!')
 
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('wine_detail', args=[slug]))

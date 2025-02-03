@@ -10,7 +10,7 @@ class ReviewForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('body', 'wine', 'title')
+        fields = ('wine', 'author', 'title', 'body', 'rating', 'featured_image',) 
 
 
 
