@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About
-from .forms import NewsletterForm
+from .models import About, WineReviewSubmission
+from .forms import NewsletterForm, WineReviewSubmissionForm
 
 
 def about_me(request):
@@ -27,3 +27,14 @@ def about_me(request):
             "newsletter_form": newsletter_form
         },
     )
+
+def contact(request):
+    if request.method == 'POST':
+        form = WineReviewSubmissionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your review has been submitted!')
+            return redirect('contact')
+    else:
+        form = WineReviewSubmissionForm()
+    return render(request, 'about/contact.html', {'form': form})
