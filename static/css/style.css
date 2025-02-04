@@ -30,6 +30,13 @@ body {
     text-align: center;
 }
 
+h5 {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #330835;
+}
+
 .light-bg {
     background-color: #89B181;
 }
@@ -294,4 +301,7 @@ body {
     border-radius: 5px;
     background-color: #f8f9fa;
 }
+
+
+
 
