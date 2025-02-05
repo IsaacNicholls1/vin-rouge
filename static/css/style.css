@@ -55,9 +55,15 @@ h5 {
 }
 
 .card {
-    border: solid 3px #330835;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #94B88C;
     margin-bottom: 20px;
+}
+
+.card-body {
+    padding: 20px;
 }
 
 .btn {
@@ -66,6 +72,24 @@ h5 {
     color: white;
     display: block;
     margin: 0 auto;
+}
+
+.btn-primary {
+    background-color: #330835;
+    border-color: #fefefe;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    width: 150px;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    color: black;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
 
 .image-container {
@@ -272,6 +296,8 @@ h5 {
 }
 
 .page-title {
+    color: #333;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 

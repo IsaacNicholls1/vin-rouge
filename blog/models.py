@@ -58,7 +58,6 @@ class Review(models.Model):
     
 
 class Comment(models.Model):
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="comments", default=None)
     slug = models.SlugField(unique=True, blank=True)
     title = models.CharField(max_length=200, default="Default Title")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_author")
@@ -67,7 +66,7 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
     featured_image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=0)
-    content = models.TextField(default="This is the comment content")
+    # content = models.TextField(default="This is the comment content")
     rating = models.IntegerField(choices=RATING, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

@@ -1,5 +1,5 @@
 
-# The Arcade
+# Vin - Rouge
 
 This Website was built by Isaac Nicholls for Code Institute Final project for the 16 week Bootcamp - Full Stack Development for the AI Augmented Developer. The brief for the project was a full interactive website, with bpth front and back end server, using the Django/Python framework. Full CRUD funbtionality was required. After some research and brainstorming/mindmapping I had idea of a wine review website, specifically for French wines. This is something that interests me, and after living in France for 10 years it is something i have a passion and knowledge for. This helped to design the site, and create user stories and my project board.   
 
@@ -192,6 +192,7 @@ The header and footer have been kept the same throughout the site - styled simpl
   - User Story: As a website visitor, I can search for wines, so that I can quickly find reviews and information on specific wines.
   - User Story: As a registered user, I can add wines to my favourites list, so that I can easily access my preferred wines later.
   - User Story: As a new visitor, I can register for an account, so that I can access personalised features and leave reviews.
+  - User Story: As a site admin, I want to implement an age confirmation feature to ensure compliance with legal drinking age regulations and protect underage visitors.
   
 <hr>
 <p><a href="#contents">Back To Top</a></p>
@@ -377,6 +378,10 @@ User Story:
 13.
 User Story:
 ![User story13](/assets/images/rdme-image/userstories/userstory11done.png)
+
+13.
+User Story:
+![User story14](/assets/images/rdme-image/userstories/userstory11done.png)
 
 
 <hr>

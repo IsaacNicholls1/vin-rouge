@@ -3,34 +3,29 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="hero-image"></div>
-    <div class="row">
-      <div class="col-12 col-md-4 text-center">
-        {% if "placeholder" in about.profile_image.url %}
-          <img src="{% static 'images/redwine.jpg' %}" width="75%" alt="placeholder image">
-        {% else %}
-          <img src="{{ about.profile_image.url }}" width="75%" alt="{{ about.title }}">
-        {% endif %}
-      </div>
-      <div class="col-12 col-md-8">
-        <h2>{{ about.title }}</h2>
-        {{ about.content | safe }}
-      </div>
+<div class="hero-image">
+  <div class="row">
+    <div class="col-12 col-md-4 text-center">
+      {% if "placeholder" in about.profile_image.url %}
+      <img src="{% static 'images/redwine.jpg' %}" width="75%" alt="placeholder image">
+      {% else %}
+      <img src="{{ about.profile_image.url }}" width="75%" alt="{{ about.title }}">
+      {% endif %}
     </div>
-    <div class="row">
-      <div class="col text-right">
-        <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
-      </div>
+    <div class="col-12 col-md-8">
+      <h2>{{ about.title }}</h2>
+      {{ about.content | safe }}
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-6 my-5">
-        <h2>Sign Up to our newsletter for a monthly in-depth look at France's Wine regions!</h2>
-        <form method="post">
-          {{ newsletter_form | crispy }}
-          {% csrf_token %}
-          <button class="btn btn-secondary" type="submit">Submit</button>
-        </form>
-      </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 my-5">
+      <h2>Sign Up to our newsletter for a monthly in-depth look at France's Wine regions!</h2>
+      <form method="post">
+        {{ newsletter_form | crispy }}
+        {% csrf_token %}
+        <button class="btn btn-secondary" type="submit">Submit</button>
+      </form>
     </div>
   </div>
 </div>

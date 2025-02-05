@@ -4,55 +4,55 @@
 
 {% block content %}
 <div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <h1 class="review-title">{{ wine.title }}</h1>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/vineyard.jpg' %}" class="scale" alt="Vineyard">
-            </div>
-        </div>
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 masthead-text">
+        <h1 class="review-title">{{ wine.title }}</h1>
+      </div>
+      <div class="d-none d-md-block col-md-6 masthead-image">
+        <img src="{% static 'images/vineyard.jpg' %}" class="scale" alt="Vineyard">
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The content goes inside the card-text. -->
-                <p class="card-text">
-                    <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
-                    <br>
-                    <br>
-                    {{ wine.title | safe }}
-                    <br>
-                    <br>
-                    Name: {{ wine.name }}
-                    <br>
-                    <br>
-                    Region: {{ wine.region }}
-                    <br>
-                    <br>
-                    Vintage: {{ wine.vintage }}
-                    <br>
-                    <br>
-                    {{ wine.description }}
-                    <br>
-                    <br>
-                    Grape: {{ wine.grape }}
-                    <br>
-                    <br>
-                    {{ wine.rating }} out of 5 🍷
-                    <br>
-                    <br>
+  <div class="row">
+    <div class="col card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <!-- The content goes inside the card-text. -->
+        <p class="card-text">
+          <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
+          <br>
+          <br>
+          {{ wine.title | safe }}
+          <br>
+          <br>
+          Name: {{ wine.name }}
+          <br>
+          <br>
+          Region: {{ wine.region }}
+          <br>
+          <br>
+          Vintage: {{ wine.vintage }}
+          <br>
+          <br>
+          {{ wine.description }}
+          <br>
+          <br>
+          Grape: {{ wine.grape }}
+          <br>
+          <br>
+          {{ wine.rating }} out of 5 🍷
+          <br>
+          <br>
 
-                </p>
-            </div>
-        </div>
+        </p>
+      </div>
     </div>
+  </div>
 
-    <!-- Displaying count of comments -->
+  <!-- Displaying count of comments -->
   <div class="row">
     <div class="col-12">
       <strong class="text-secondary">
@@ -92,31 +92,14 @@
         <!-- Our for loop ends here -->
         {% endfor %}
       </div>
-      
-    
+
+
     </div>
   </div>
-  <!-- Creating New Comments -->
-  <div class="col-md-4 card mb-4 mt-3">
-    <div class="card-body">
-      {% if user.is_authenticated %}
-      <h3>Leave a comment:</h3>
-      <p>Posting as: {{ user.username }}</p>
-      <form id="commentForm" method="post"
-        style="margin-top: 1.3em;">
-        {{ comment_form | crispy }}
-        {% csrf_token %}
-        <button id="submitButton" type="submit"
-          class="btn btn-signup btn-lg">Submit</button>
-      </form>
-      {% else %}
-      <p>Log in to leave a comment</p>
-      {% endif %}
-    </div>
-  </div>
+  
 </div>
 
-    {% endblock %}
-    {% block extras %}
-    <script src="{% static 'js/comments.js' %}"></script>
-    {% endblock %}
+{% endblock %}
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
