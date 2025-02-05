@@ -11,11 +11,6 @@ from django.urls import reverse_lazy
 def index(request):
     return render(request, 'blog/index.html')
 
-
-# def wine_list(request):
-#     wines = Wine.objects.all()
-#     return render(request, 'blog/wine_list.html', {'wines': wines})    
-
 class WineList(generic.ListView):
     model = Wine
     template_name = "blog/wine_list.html"
@@ -26,6 +21,13 @@ class WineDetail(generic.DetailView):
     model = Wine
     template_name = "blog/wine_detail.html"
     context_object_name = "wine"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(wine=self.object)
+        return context
+
+
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -71,10 +73,10 @@ class CommentCreateView(CreateView):
 
 
 
-class ReviewList(generic.ListView):
-    queryset = Review.objects.filter(status=1)
-    template_name = "blog/review_list.html"
-    paginate_by = 6
+# class ReviewList(generic.ListView):
+#     queryset = Review.objects.filter(status=1)
+#     template_name = "blog/review_list.html"
+#     paginate_by = 6
 
 # def review_list(request):
 #     reviews = Review.objects.filter(status=1).order_by("-created_on")
