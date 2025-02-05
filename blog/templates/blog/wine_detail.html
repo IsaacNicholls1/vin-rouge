@@ -69,13 +69,26 @@
         <p><strong>{{ comment.author }}</strong> {{ comment.title }}:</p>
         <p>{{ comment.body }}</p>
         <p>{{ comment.rating }} out of 5 🍷</p>
-        <p>{{ comment.image }}</p>
         <p><small class="text-muted">{{ comment.created_on }}</small></p>
       </div>
+      {% if comment.author == user %}
+        <a href="{% url 'edit_comment' comment.pk %}" class="btn btn-secondary mt-3">Edit</a>
+      {% endif %}
     </div>
     {% empty %}
     <p>No comments yet. Be the first to comment!</p>
     {% endfor %}
+
+    <h3>Leave a Comment</h3>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'comment_create' wine.slug %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-secondary mt-3">Click here to leave your Comment!</button>
+    </form>
+    {% else %}
+    <p>You need to <a href="{% url 'account_login' %}">log in</a> to leave a comment.</p>
+    {% endif %}
   </div>
 
 

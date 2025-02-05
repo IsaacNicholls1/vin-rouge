@@ -66,6 +66,15 @@ h5 {
     padding: 20px;
 }
 
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 20px;
+}
+
 .btn {
     font-family: var(--main-font);
     background-color: #330835;
@@ -80,14 +89,14 @@ h5 {
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #330835;
     border-color: #6c757d;
     width: 150px;
 }
 
-.btn-primary:hover,
+.btn:hover,
 .btn-secondary:hover {
-    color: black;
+    color: white;
     background-color: #6c757d;
     border-color: #6c757d;
 }

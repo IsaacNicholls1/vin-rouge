@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .models import Review, Comment, Wine
 from .forms import CommentForm, ReviewForm
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
 
 #index view
@@ -29,23 +30,18 @@ class WineDetail(generic.DetailView):
 
 
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["reviews"] = Review.objects.filter(wine=self.object)
-    #     context["review_form"] = ReviewForm()
-    #     return context
-
-    # def post(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     form = ReviewForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         review = form.save(commit=False)
-    #         review.author = request.user
-    #         review.wine = self.object
-    #         review.save()
-    #         messages.success(request, "Your review has been submitted!")
-    #         return redirect('wine_detail', slug=self.object.slug)
-    #     return self.render_to_response(self.get_context_data(form=form))
+# class CommentCreateView(CreateView):
+#     def post(self, request, wine_slug):
+#         wine = get_object_or_404(Wine, slug=wine_slug)
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.author = request.user
+#             comment.review = wine.reviewed_wine.first()  # Assuming one review per wine
+#             comment.save()
+#             messages.success(request, 'Your comment has been submitted and is awaiting approval!')
+#             return redirect('wine_detail', slug=wine_slug)
+#         return render(request, 'blog/wine_detail.html', {'form': form, 'wine': wine})
 
 # https://ccbv.co.uk/projects/Django/5.0/django.views.generic.edit/CreateView/
 class CommentCreateView(CreateView):
@@ -113,6 +109,21 @@ class CommentCreateView(CreateView):
 
 
 # ----- Editing reviews
+
+class EditCommentView(UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/edit_comment.html'
+    context_object_name = 'comment'
+
+    def get_queryset(self):
+        # Ensure only the author of the comment can edit it
+        queryset = super().get_queryset()
+        return queryset.filter(author=self.request.user)
+
+    def get_success_url(self):
+        # Redirect back to the wine detail page after editing
+        return reverse_lazy('wine_detail', kwargs={'pk': self.object.wine.pk})
 
 
 # def user_review_edit(request, slug, user_review_id):

@@ -90,7 +90,7 @@ The board can be found [here](https://github.com/users/IsaacNicholls1/projects/1
 
 - In order to effectively utilise the MoSCoW prioritization method, I ensured that my project issues board in GitHub was actively used. This provided a comprehensive overview of the issues related to my user stories, allowing me to categorize and track them efficiently. The GitHub issues board enabled me to organise tasks, monitor progress, and verify completion, ensuring that I addressed our Must-Haves, Should-Haves, Could-Haves, and Won't-Haves systematically and effectively.
 
-![moscow](/assets)
+![moscow](/static/images/MOSCOW.png)
 
 - - - -
 
@@ -98,39 +98,42 @@ The board can be found [here](https://github.com/users/IsaacNicholls1/projects/1
 
 
 ### Background Javascript
-- modal 18/over
+- modal 18/over added
+
+- ![Home Page screenshot](static/images/homepage.png)
 
 ## Intro page and CTA button
 - The homepage is the main landing page of the website, which provides some info on the site, a nice welcoming feel and a cta button to take you through to the next stage of the site, the wines.  
-- ![Home Page screenshot](example)
+- ![Home Page screenshot](static/images/homepage.png)
 
 ### Registering
 - In the header, if you are not already logged in, you can press the 'Register' button which will take you to the registration page.
-- ![Register screenshot](example)
+- ![Register screenshot](static/images/signup.png)
 
 ### Logging in
 - In the header, if you are not already logged in, you can press the 'Login' button which will take you to the log-in page.
-- ![Log-in page screenshot](example)
+- ![Log-in page screenshot](static/images/signin.png)
+- ![Log-in page screenshot](static/images/signinsuccess.png)
 
 ### Logging out
 - In the header, if you are logged in, you can press the 'Logout' button which will take you to the log-out page.
-- ![Log-out page screenshot](example)
+- ![Log-out page screenshot](static/images/signout.png)
 
 ### The admin panel
 - Accessible only by the superuser, the admin panel is where the Wine review Site owner can create reviews and approve user-submitted reviews.
 - User reviews are sorted based on approval status, with unapproved reviews displayed at the top for easy identification by the superuser.
-- - ![Admin panel screenshot](example)
+- - ![Admin panel screenshot](static/images/admin.png)
 
 ## Wine Page
 This is the page where I want users to navigate to, they can see all the posts about wines, the different wines and sort them into categories. They can nagivate to their favourite wines and leave reviews and comments. 
 
-### User review
-- At the bottom right corner of each Wine review, there is the opportunity for users to leave their own reviews and ratings on that location. Users simply type their review in the text box, select their rating and then press submit and it will be added with a "This review is awaiting approval" message. A message box will also pop up at the top of the page to provide feedback to the user. 
+### User review/comment
+- At the bottom of each Wine review, there is the opportunity for users to leave their own comments and ratings on that location. Users simply type their comment in the text box, select their rating and then press submit and it will be added with a "This comment is awaiting approval" message. A message box will also pop up at the top of the page to provide feedback to the user. 
 - ![User review screenshot](example)
 - ![Feedback screenshot](example)
 
 ### Editing a user review
-- If you want to edit your own review, you can press the edit button which will open the edit page in a new tab. You can then edit your review and it will be updated. 
+- If you want to edit your own comment, you can press the edit button which will open the edit page in a new tab. You can then edit your review and it will be updated. 
 - - - ![Edit confirmation screenshot](example)
 
 ### Deleting a user review
@@ -165,12 +168,6 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 # UX/UI #
 
-   ## Database Planning 
-
-
-
-
-
    ## Purpose and Intended Audience
 
    -The purpose of Vin Rouge is to create a comprehensive and user-friendly wine review platform. This site is designed to help users discover, review, and share their experiences with various French wines, leveraging Django and Python for robust backend support and smooth user interactions.
@@ -204,16 +201,13 @@ The header and footer have been kept the same throughout the site - styled simpl
 
  - I selected a palette that balances elegance and approachability, reflecting the sophistication of French wines and the inviting nature of Vin Rouge. Pastel green offers a fresh, soothing backdrop that complements the rich, deep hues of wine colors like merlot and burgundy. Light gray adds a modern, clean touch, ensuring the overall design is sleek and visually appealing, enhancing the user's experience while exploring wine reviews.
 
-
- - Inspired by https://coolors.co/16084a-141414-eef0f2-ffa90a-c270b0
-
  **Coolers**
-![Colours](/assets/images/rdme-image/coolercolorscheme.png)
+![Colours](/static/images/coolers.png)
  
  ##  Fonts
  -  I chose Libre Baskerville as my font, as it was a common font used on other wine sites, and also used on many wine bottles. It also has good readability. 
 
- ![Font](/assets/images/rdme-image/googlefont.png)
+ ![Font](/static/images/font.png)
  
  ## Wireframes
 
@@ -221,18 +215,6 @@ The header and footer have been kept the same throughout the site - styled simpl
  - The wireframes were developed at the start of the project and then worked on as I went through, to tweak the changes I made to the design and feel of the site
  - They differ slightly to the exact look of the site as In decided to use different images and styles to the wire frame ideas. 
     
-  - <details>
-<summary>Blog detail wireframes for mobile and desktop</summary>
-
-  <img width="1080" alt="blog post detail" src="">
-  <img width="1080" alt="blog post detail" src="">
-  <img width="1080" alt="blog post detail" src="">
-  <img width="1080" alt="blog post detail" src="https://github.com/user-attachments/assets/9f94cd74-4afe-4984-8455-f962e58bd48b">
-  <img  >
-
-</details>
-
-
 <hr>
 <p><a href="#contents">🍷Back To Top🍷</a></p>
 
@@ -277,9 +259,9 @@ Initial errors were thrown up involving line length of comments and spacing but 
 - I tested the site's responsiveness using multiple devices, including desktops, tablets, and smartphones, to ensure a consistent user experience. By leveraging browser DevTools, I was able to simulate various screen sizes and resolutions, identifying and resolving potential layout issues. Additionally, I conducted real-world testing on physical devices to validate the site's functionality and appearance across different platforms.
 
 
-![Am I Responsive home](/assets/images/rdme-image/responsive.png)
-![Am I Responsive about](/assets/images/rdme-image/responsiveabout.png)
-![Am I Responsive contact](/assets/images/rdme-image/responsivecontact.png)
+![Am I Responsive home](/static)
+![Am I Responsive wines](/static)
+![Am I Responsive about](/static)
 
 ## Device Testing
 
@@ -306,50 +288,50 @@ I tested our site vs the user stories:
 
 1. 
 User Story:
-![User story1](/assets/images/rdme-image/userstories/userstory1done.png)
+![User story1](/static/images/userstory1done.png)
 
 --
 
 2. 
 User Story:
-![User story2](/assets/images/rdme-image/userstories/userstory2done.png)
+![User story2](/static/images/)
 
 --
 
 3.
 User Story:
-![User story3](/assets/images/rdme-image/userstories/userstory3done.png)
+![User story3](/static)
 
 --
 
 4.
 User Story:
-![User story4](/assets/images/rdme-image/userstories/userstory4done.png)
+![User story4](/static/images/userstory4done.png)
 
 --
 
 5. 
 User Story:
-![User story5](/assets/images/rdme-image/userstories/userstory5done.png)
+![User story5](/static/images/userstory5done.png)
 
 --
 
 6.
 User Story:
-![User story6](/assets/images/rdme-image/userstories/userstory6done.png)
+![User story6](/static/images/userstory6done.png)
 
 --
 
 7.
 User Story:
-![User story7](/assets/images/rdme-image/userstories/userstory6done.png)
+![User story7](/static/images/userstory7done.png)
 
 
 --
 
 8.
 User Story:
-![User story8](/assets/images/rdme-image/userstories/userstory6done.png)
+![User story8](/static/images/userstory8done.png)
 
 
 --
@@ -357,31 +339,27 @@ User Story:
 9.
 
 User Story:
-![User story9](/assets/images/rdme-image/userstories/userstory9done.png)
+![User story9](/static/images/userstory9done.png)
 
 --
 
 10.
 User Story:
-![User story10](/assets/images/rdme-image/userstories/userstory10done.png)
+![User story10](/static/images/userstory10done.png)
 
 --
 
 11.
 User Story:
-![User story11](/assets/images/rdme-image/userstories/userstory11done.png)
+![User story11](/static/images/)
 
 12.
 User Story:
-![User story12](/assets/images/rdme-image/userstories/userstory11done.png)
+![User story12](/static)
 
 13.
 User Story:
-![User story13](/assets/images/rdme-image/userstories/userstory11done.png)
-
-13.
-User Story:
-![User story14](/assets/images/rdme-image/userstories/userstory11done.png)
+![User story14](/static/images/userstory13done.png)
 
 
 <hr>
@@ -502,8 +480,7 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 1. [Bootstrap 4.4.1:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
    - Bootstrap was used to assist with the responsiveness and styling of the website.
-2. [Google Fonts:](https://fonts.google.com/specimen/Press+Start+2P?selection.family=Monoton|Orbitron:wght@400..900|Press+Start+2P|VT323)
-   - Google fonts were used to import the PressStart2p font into the style.css file which is used on all pages throughout the project.
+2. [Google Fonts:](https://fonts.google.com/specimen/Libre+Baskerville?selection.family=Monoton|Orbitron:wght@400..900|VT323&query=libre+bas)
 3. [Font Awesome:](https://fontawesome.com/)
    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 4. [jQuery:](https://jquery.com/)
@@ -514,13 +491,13 @@ DEBUG mode is disabled in the production environment to enhance security.
         - Tiny.PNG was used to compress images
 7. [W3 Schools](https://www.w3schools.com/)
         - used to look up syntax for HTML and CSS
-8. [Co-Pilot] (https://copilot.microsoft.com/chats/dKpHf4qafVNQJorv8pCDc)
+8. [Co-Pilot] (https://copilot.microsoft.com/)
    - Used extensively for help with coide, script and de bugging processes. An invaluable tool.  
 9. [Balsamiq:](https://balsamiq.com/)
    - Balsamiq was used to create the wireframes during the design process.
 10. [Git](https://git-scm.com/)
         - Git was used for version control
-11. [GitHub:](https://github.com/IsaacNicholls1/TheAiTeam)
+11. [GitHub:](https://github.com/IsaacNicholls1/vin-rouge)
    - GitHub is used to store the projects code after being pushed from Git.
 12. [W3 Jigsaw](https://jigsaw.w3.org/css-validator/)
         - used to validate the CSS
@@ -538,7 +515,7 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 ## Media and Content
   
- - The following photos were used in the content: (https://github.com/IsaacNicholls1/)
+ - The following photos were used in the content: (https://github.com/IsaacNicholls1/vin-rouge/tree/main/static/images)
 - Font awesome was used to add icons for UX purposes auch as social media icons. 
 - Balsamiq was used to create the wireframes during the design process, as this was the second time of using the tool it took a bit of getting used to and developing these. We tweaked them as i went along and made slight changes to the actual site. 
 
@@ -553,9 +530,6 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 # Use of AI #
 
-
-
-
 ## Co-Pilot
 
 - Throughout this project, I extensively utilised Copilot to enhance development and streamline testing. As this was my first experience with AI tools on such a scale, I found Copilot to be an invaluable collaborator throughout the entire process.
@@ -565,7 +539,7 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 ## Code Creation & other uses
 
--By utilising question-and-answer prompts and multi-step instructions, I was able to generate a good initial draft for my test cases. I could then refine these to better match the project's requirements. 
+- By utilising question-and-answer prompts and multi-step instructions, I was able to generate a good initial draft for my test cases. I could then refine these to better match the project's requirements. 
 
 - The iterative back-and-forth with Copilot felt like having a knowledgeable pair programmer by my side. This collaboration made me more thoughtful about how I structured my prompts, as clearer questions led to better answers.
 
@@ -591,9 +565,9 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 - Future features that we would have liked to implement from our user stories
    User Story:
-   ![User story](/assets/images/rdme-image/userstories/userstory13.png)
+   ![User story](/static)
    User Story:
-   ![User story](/assets/images/rdme-image/userstories/userstory7.png)
+   ![User story](/static)
 
 
 ###  Acknowledgments
