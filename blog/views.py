@@ -5,9 +5,11 @@ from django.http import HttpResponseRedirect
 from .models import Review, Comment, Wine
 from .forms import CommentForm, ReviewForm
 from django.views.generic import View
-from django.views.generic.edit import CreateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
+from django.utils.text import slugify
+from django.utils import timezone
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 #index view
 def index(request):
@@ -81,8 +83,16 @@ class EditCommentView(UpdateView):
         return reverse_lazy('wine_detail', kwargs={'slug': self.object.wine.slug})
 
 
-    # ----- Deleting reviews
-
+    # ----- Deleting comments
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.author == request.user:
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully!')
+    else:
+        messages.error(request, 'You can only delete your own comments.')
+    return redirect('wine_detail', slug=comment.wine.slug)
 
 # def user_review_delete(request, slug, user_review_id):
 #     """

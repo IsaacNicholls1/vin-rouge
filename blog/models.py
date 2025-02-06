@@ -1,8 +1,8 @@
 from django.db import models
+import uuid
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils.text import slugify
-from django.db.models.signals import pre_save
 
 STATUS = ((0, "Draft"), (1, "Published"))
 RATING = ((1, "1🍷"), (2, "2🍷"), (3, "3🍷"), (4, "4🍷"), (5, "5🍷"))
@@ -77,6 +77,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.author.username}. This wine - {self.wine} gets {self.rating}/5'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title + "-" + str(uuid.uuid4()))
+        super().save(*args, **kwargs)
+
 
 class About(models.Model):
     title = models.CharField(max_length=200)

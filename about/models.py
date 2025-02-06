@@ -37,3 +37,13 @@ class WineReviewSubmission(models.Model):
 
     def __str__(self):
         return f"Review by {self.name} for {self.wine_name}"
+    
+
+class Newsletter(models.Model):
+    subject = models.CharField(max_length=200)
+    pdf_file = models.FileField(upload_to='newsletters/', default='path/to/default.pdf')
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.subject
