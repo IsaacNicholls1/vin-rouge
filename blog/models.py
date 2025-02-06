@@ -30,6 +30,7 @@ class Wine(models.Model):
     description = models.TextField()
     featured_image = CloudinaryField('image', default='redwine')
     excerpt = models.TextField(max_length=100, default="wine-name")
+    
 
     class Meta:
         ordering = ["-title"]

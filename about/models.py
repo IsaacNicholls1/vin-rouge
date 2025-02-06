@@ -32,6 +32,8 @@ class WineReviewSubmission(models.Model):
     review = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     submitted_on = models.DateTimeField(auto_now_add=True)
+    image = CloudinaryField('image', default='placeholder')
+    
 
     def __str__(self):
         return f"Review by {self.name} for {self.wine_name}"

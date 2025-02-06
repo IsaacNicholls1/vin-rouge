@@ -11,4 +11,4 @@ class NewsletterForm(forms.ModelForm):
 class WineReviewSubmissionForm(forms.ModelForm):
     class Meta:
         model = WineReviewSubmission
-        fields = ['name', 'email', 'wine_name', 'review', 'rating']
+        fields = ['name', 'email', 'wine_name', 'review', 'rating', 'image',]

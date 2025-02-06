@@ -10,11 +10,11 @@ class AboutAdmin(SummernoteModelAdmin):
 
 @admin.register(NewsletterRequest)
 class NewsletterRequestAdmin(admin.ModelAdmin):
-    list_display = ('read',)
+    list_display = ('read', 'name', 'email')
 
 
 @admin.register(WineReviewSubmission)
 class WineReviewSubmissionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'wine_name', 'rating', 'submitted_on')
+    list_display = ('name', 'wine_name', 'rating', 'submitted_on', 'image', 'email', 'review')
     search_fields = ['name', 'wine_name']
     list_filter = ('submitted_on',)

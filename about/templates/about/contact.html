@@ -1,15 +1,32 @@
-<!-- about/templates/about/contact.html -->
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
-<div class="container mt-5">
-    <h2>Contact Us</h2>
-    <p>If you have a wine review you'd like to share, please fill out the form below:</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+{% load crispy_forms_tags %}
+
+
+<div class="hero-text text-center mb-3">
+    <h2>Welcome to Our Contact Page</h2>
+    <p>Please leave your wine review below and we will endevour to include it on our site!</p>
 </div>
+<div class="container mt-3 mb-3" style="border: 1px solid #ccc; padding: 15px; max-width: 800px;">
+    <div class="hero-image text-center">
+        <img src="{% static 'images/redwine.jpg' %}" width="100%" alt="hero image">
+    </div>
+</div>
+
+
+<div class="row justify-content-center mt-3 mb-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ wine_form | crispy }}
+                    <button class="btn btn-secondary mt-3" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

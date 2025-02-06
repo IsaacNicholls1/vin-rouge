@@ -3,30 +3,29 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="hero-image">
+<div class="text-center">
+  <h2>About us</h2>
+</div>
+<div class="container mt-3 mb-3" style="border: 1px solid #ccc; padding: 15px; max-width: 1000px;">
   <div class="row">
-    <div class="col-12 col-md-4 text-center">
-      {% if "placeholder" in about.profile_image.url %}
-      <img src="{% static 'images/redwine.jpg' %}" width="75%" alt="placeholder image">
-      {% else %}
-      <img src="{{ about.profile_image.url }}" width="75%" alt="{{ about.title }}">
-      {% endif %}
+    <div class="col-md-4 hero-image align-left">
+      <img src="{% static 'images/redwine.jpg' %}" width="60%" alt="hero image">
     </div>
-    <div class="col-12 col-md-8">
-      <h2>{{ about.title }}</h2>
-      {{ about.content | safe }}
-    </div>
-  </div>
-  
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-6 my-5">
-      <h2>Sign Up to our newsletter for a monthly in-depth look at France's Wine regions!</h2>
-      <form method="post">
-        {{ newsletter_form | crispy }}
-        {% csrf_token %}
-        <button class="btn btn-secondary" type="submit">Submit</button>
-      </form>
+    <div class="col-md-8 hero-text text-right d-flex align-items-right">
+      <p>Welcome to our site! Here, we explore the rich and diverse wine regions of France. Join us on a journey through the vineyards and discover the stories behind each bottle.</p>
     </div>
   </div>
 </div>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6 my-5">
+    <h2>Sign Up to our newsletter for a monthly in-depth look at France's Wine regions!</h2>
+    <form method="post">
+      {{ newsletter_form | crispy }}
+      {% csrf_token %}
+      <button class="btn btn-secondary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
 {% endblock content %}

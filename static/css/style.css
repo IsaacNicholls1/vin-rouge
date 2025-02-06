@@ -337,6 +337,12 @@ h5 {
     background-color: #f8f9fa;
 }
 
+.hero-image {
+    width: 100%;
+    height: auto;
+    background-image: url('/static/images/redwine.jpg');
+    
+}
 
 
 
