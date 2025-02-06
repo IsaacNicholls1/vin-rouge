@@ -36,7 +36,7 @@ class WineDetail(generic.DetailView):
 
 class CommentCreateView(CreateView):
     model = Comment
-    fields = ['title','author', 'wine',  "body", 'rating',] # set the form fields here. 
+    fields = ['title', "body", 'rating',] # set the form fields here. 
     template_name = 'blog/comment_form.html'
     success_url = "/"
 
@@ -62,9 +62,10 @@ class CommentCreateView(CreateView):
 
 class EditCommentView(UpdateView):
     model = Comment
-    form_class = CommentForm
+    fields = ['title', 'body', 'rating']  # specify the fields you want in the form
     template_name = 'blog/edit_comment.html'
     context_object_name = 'comment'
+    success_url = "/"
 
     def get_queryset(self):
         # Ensure only the author of the comment can edit it
@@ -77,7 +78,7 @@ class EditCommentView(UpdateView):
 
     def get_success_url(self):
         # Redirect back to the wine detail page after editing
-        return reverse_lazy('wine_detail', kwargs={'slug': self.object.review.wine.slug})
+        return reverse_lazy('wine_detail', kwargs={'slug': self.object.wine.slug})
 
 
     # ----- Deleting reviews
