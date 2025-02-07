@@ -46,6 +46,11 @@ class CommentCreateView(CreateView):
         wine = get_object_or_404(Wine, slug=wine_slug)
         form.instance.wine = wine
         form.instance.author = self.request.user   # set form author to user.
+        messages.success(
+            self.request,
+            'Thanks, Your comment has been received and is being moderated, '
+            'it should be posted soon!'
+        )
         return super().form_valid(form)
 
     # redirect user to previous page. not working.
@@ -98,3 +103,9 @@ def delete_comment(request, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments.')
     return redirect('wine_detail', slug=comment.wine.slug)
+
+
+# def search(request):
+#     query = request.GET.get('q')
+#     results = Wine.objects.filter(name__icontains=query)
+#     return render(request, 'search_results.html', {'results': results})
