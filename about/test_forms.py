@@ -4,7 +4,6 @@ from .forms import CollaborateForm
 
 class TestCollaborateForm(TestCase):
 
-
     def test_name_is_required(self):
         """Test for the 'name' field"""
         form = CollaborateForm({

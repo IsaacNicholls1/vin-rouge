@@ -1,11 +1,11 @@
 # signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage
 from django.conf import settings
 from .models import NewsletterRequest
-
 from .models import Newsletter
+
 
 @receiver(post_save, sender=NewsletterRequest)
 def send_newsletter(sender, instance, created, **kwargs):
@@ -17,7 +17,10 @@ def send_newsletter(sender, instance, created, **kwargs):
         # Create the email
         email = EmailMessage(
             subject,
-            f"Hello {instance.name},\n\nPlease find attached your requested newsletter.",
+            (
+                f"Hello {instance.name},\n\n"
+                "Please find attached your requested newsletter."
+            ),
             settings.DEFAULT_FROM_EMAIL,
             [instance.email],
         )

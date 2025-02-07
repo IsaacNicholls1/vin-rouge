@@ -17,6 +17,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='newsletter',
             name='pdf_file',
-            field=models.FileField(default='path/to/default.pdf', upload_to='newsletters/'),
+            field=models.FileField(
+                default='path/to/default.pdf',
+                upload_to='newsletters/',
+            ),
         ),
     ]

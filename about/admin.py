@@ -15,7 +15,10 @@ class NewsletterRequestAdmin(admin.ModelAdmin):
 
 @admin.register(WineReviewSubmission)
 class WineReviewSubmissionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'wine_name', 'rating', 'submitted_on', 'image', 'email', 'review')
+    list_display = (
+        'name', 'wine_name', 'rating', 'submitted_on',
+        'image', 'email', 'review'
+    )
     search_fields = ['name', 'wine_name']
     list_filter = ('submitted_on',)
 
