@@ -294,7 +294,7 @@ User Story:
 
 2. 
 User Story:
-![User story2](/static/images/)
+![User story2](/static/images/userstory2done.png)
 
 --
 

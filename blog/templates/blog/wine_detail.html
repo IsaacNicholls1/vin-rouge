@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="masthead">
-  <div class="container">
+  <div class="container" style="background-color: transparent; border: none;">
     <div class="row g-0">
       <div class="col-md-6 masthead-text">
         <h1 class="review-title">{{ wine.title }}</h1>
@@ -16,44 +16,39 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col card mb-4  mt-3 left  top">
-      <div class="card-body">
-        <!-- The content goes inside the card-text. -->
-        <p class="card-text">
-          <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2">
-          <br>
-          <br></strong>
-          {{ wine.title | safe }}
-          </strong>
-          <br>
-          <br>
-          <strong>
-            Name: {{ wine.name }}
-          </strong>
-          <br>
-          <br>
-          Region: {{ wine.region }}
-          <br>
-          <br>
-          Vintage: {{ wine.vintage }}
-          <br>
-          <br>
-          {{ wine.description }}
-          <br>
-          <br>
-          Grape: {{ wine.grape }}
-          <br>
-          <br>
-          {{ wine.rating }} out of 5 🍷
-          <br>
-          <br>
-
-        </p>
-      </div>
+<div class="container1 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="{{ wine.featured_image.url }}" alt="{{ wine.title }}" class="img-fluid mt-2 mb-3" style="max-height: 300px; object-fit: cover;">
+                    </div>
+                    <h2 class="card-title text-center">{{ wine.title }}</h2>
+                    <hr>
+                    <p class="card-text">
+                        <strong>Name:</strong> {{ wine.name }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Region:</strong> {{ wine.region }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Vintage:</strong> {{ wine.vintage }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Grape:</strong> {{ wine.grape }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Description:</strong> {{ wine.description }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Rating:</strong> {{ wine.rating }} out of 5 🍷
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
 
   <!-- Displaying count of comments -->
   <div class="row">
@@ -64,7 +59,7 @@
     </div>
   </div>
   <!-- Displaying Comments -->
-  <div class="container mt-5">
+  <div class="container mt-5" style="background-color: transparent;">
     <h2>Comments</h2>
     {% for comment in comments %}
     <div class="card mb-3">

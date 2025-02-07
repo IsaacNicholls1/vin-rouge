@@ -62,6 +62,25 @@ h5 {
     margin-bottom: 20px;
 }
 
+.container {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #94B88C;
+    margin-bottom: 20px;
+}
+
+.container3 {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card-body {
     padding: 20px;
 }
@@ -300,10 +319,6 @@ h5 {
     margin-top: 20px;
 }
 
-.container {
-    padding: 20px;
-}
-
 .page-title {
     color: #333;
     font-size: 2rem;
@@ -343,6 +358,20 @@ h5 {
     background-image: url('/static/images/redwine.jpg');
     
 }
+
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+
 
 
 
