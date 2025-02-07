@@ -38,7 +38,7 @@ class WineDetail(generic.DetailView):
 
 class CommentCreateView(CreateView):
     model = Comment
-    fields = ['title', "body", 'rating',] # set the form fields here. 
+    fields = ['title', "content", 'rating',] # set the form fields here. 
     template_name = 'blog/comment_form.html'
     success_url = "/"
 
@@ -64,7 +64,7 @@ class CommentCreateView(CreateView):
 
 class EditCommentView(UpdateView):
     model = Comment
-    fields = ['title', 'body', 'rating']  # specify the fields you want in the form
+    fields = ['title', 'content', 'rating']  # specify the fields you want in the form
     template_name = 'blog/edit_comment.html'
     context_object_name = 'comment'
     success_url = "/"
@@ -93,20 +93,3 @@ def delete_comment(request, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments.')
     return redirect('wine_detail', slug=comment.wine.slug)
-
-# def user_review_delete(request, slug, user_review_id):
-#     """
-#     view to delete user review
-#     """
-#     queryset = post.objects.filter(status=1)
-#     post = get_object_or_404(queryset, slug=slug)
-#     user_review = get_object_or_404(Comment, pk=user_review_id)
-
-#     if user_review.reviewer == request.user:
-#         user_review.delete()
-#         messages.add_message(request, messages.SUCCESS, 'Review deleted!')
-#     else:
-#         messages.add_message(
-#             request, messages.ERROR, 'You can only delete your own reviews!')
-
-#     return HttpResponseRedirect(reverse('wine_detail', args=[slug]))

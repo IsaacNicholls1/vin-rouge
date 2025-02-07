@@ -59,15 +59,14 @@ class Review(models.Model):
     
 
 class Comment(models.Model):
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
     title = models.CharField(max_length=200, default="Default Title")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments_author")
     wine = models.ForeignKey(Wine, on_delete=models.CASCADE, related_name="comments_wine")
-    body = models.TextField()
     approved = models.BooleanField(default=False)
     featured_image = CloudinaryField('image', default='placeholder')
     status = models.IntegerField(choices=STATUS, default=0)
-    # content = models.TextField(default="This is the comment content")
+    content = models.TextField(default="Leave your review here")
     rating = models.IntegerField(choices=RATING, default=None)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
