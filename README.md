@@ -1,9 +1,9 @@
 
 # Vin - Rouge
 
-This Website was built by Isaac Nicholls for Code Institute Final project for the 16 week Bootcamp - Full Stack Development for the AI Augmented Developer. The brief for the project was a full interactive website, with bpth front and back end server, using the Django/Python framework. Full CRUD funbtionality was required. After some research and brainstorming/mindmapping I had idea of a wine review website, specifically for French wines. This is something that interests me, and after living in France for 10 years it is something i have a passion and knowledge for. This helped to design the site, and create user stories and my project board.   
+This Website was built by Isaac Nicholls for Code Institute Final project for the 16 week Bootcamp - Full Stack Development for the AI Augmented Developer. The brief for the project was a full interactive website, with bpth front and back end server, using the Django/Python framework. Full CRUD functionality was required. After some research and brainstorming/mindmapping I had idea of a wine review website, specifically for French wines. This is something that interests me, and after living in France for 10 years it is something i have a passion and knowledge for. This helped to design the site, and create user stories and my project board.   
 
-👩🏻‍💻 Here is an example of this website and its homepage ![Am I Responsive]()
+👩🏻‍💻 Here is an example of this website and its homepage ![Am I Responsive](static/images/responsivehome.png)
 
 Link to deployed and finished site: https://github.com/IsaacNicholls1/vin-rouge
 
@@ -14,8 +14,8 @@ Link to deployed and finished site: https://github.com/IsaacNicholls1/vin-rouge
 * [Project](#project-goals)
 
 * [Planning](#planning)
-* [Teamwork](#hackathon-teamwork)
-
+  * [Wireframes](#wireframes)
+  * [Agile](#agile)
 * [Features](#features)
 
 
@@ -25,7 +25,6 @@ Link to deployed and finished site: https://github.com/IsaacNicholls1/vin-rouge
 * [Design](#design)
   * [Colour Scheme](#colour-scheme)
   * [Fonts](#fonts)
-  * [Wireframes](#wireframes)
   * [Logo](#logo)
 
 * [Testing](#testing)
@@ -62,20 +61,22 @@ Link to deployed and finished site: https://github.com/IsaacNicholls1/vin-rouge
 
 - The site owner goal is to analyse user data and feedback to continuously improve site features and functionality.
 
-- 
-
-- - - -
-
-## Project Structure
-
-```
-Project Structure 
+----
 
 
+# Planning
 
+## Wireframes
 
-```
-# Agile Methodology
+ - Wireframes were created with Balsamiq to create clear, visual layouts of the site's design. It helped in identifying potential issues and refining the user interface early on, ensuring a more seamless user experience.
+ - The wireframes were developed at the start of the project and then worked on as I went through, to tweak the changes I made to the design and feel of the site
+
+![wfhome](/static//images/wireframehome.png)
+![wfwines](/static/images/wireframewine.png)
+![wfabout](/static/images/wireframeabout.png)
+![wfcontact](/static/images/wireframecontact.png)
+![wfwdetail](/static/images/wireframewd.png)
+
 
 ## Agile 
 - Agile methodology is "a set of methods and practices where solutions evolve through collaboration between self-organising, cross-functional teams"
@@ -98,9 +99,9 @@ The board can be found [here](https://github.com/users/IsaacNicholls1/projects/1
 
 
 ### Background Javascript
-- modal 18/over added
+- I added a modal to the site so that when users first enter the site, they get a pop down modal to ask if they are over 18 or not. I felt this was important to my site as it protects minors and adheres to laws and respolsibilities. This was performed using Javascript. 
 
-- ![Home Page screenshot](static/images/homepage.png)
+- ![Home Page screenshot](static/images/modal18.png)
 
 ## Intro page and CTA button
 - The homepage is the main landing page of the website, which provides some info on the site, a nice welcoming feel and a cta button to take you through to the next stage of the site, the wines.  
@@ -126,22 +127,28 @@ The board can be found [here](https://github.com/users/IsaacNicholls1/projects/1
 
 ## Wine Page
 This is the page where I want users to navigate to, they can see all the posts about wines, the different wines and sort them into categories. They can nagivate to their favourite wines and leave reviews and comments. 
+- ![Wines screenshot](static/images/winespage.png)
 
 ### User review/comment
 - At the bottom of each Wine review, there is the opportunity for users to leave their own comments and ratings on that location. Users simply type their comment in the text box, select their rating and then press submit and it will be added with a "This comment is awaiting approval" message. A message box will also pop up at the top of the page to provide feedback to the user. 
-- ![User review screenshot](example)
-- ![Feedback screenshot](example)
+- ![User review screenshot](static/images/comments.png)
+- ![Feedback screenshot](static/images/leavecomcinfirm.png)
 
 ### Editing a user review
 - If you want to edit your own comment, you can press the edit button which will open the edit page in a new tab. You can then edit your review and it will be updated. 
-- - - ![Edit confirmation screenshot](example)
+- - - ![Edit screenshot](static/images/editcomment.png)
+- - - ![Edit confirmation screenshot](static/images/editconfirm.png)
 
 ### Deleting a user review
 - If you want to delete your own review, you can press the delete button which will delete your comment and a confirmation message will pop-up.
-- - ![Delete confirmation screenshot](example)
+- - ![Delete screenshot](static/images/deletecomment.png)
+- - ![Delete confirmation screenshot](static/images/deletecommentconfirm.png)
 
 ## About Page
 This page features some information to the user about the site, and a short form where users can register and receive a newsletter from the site admin. 
+
+## Conatct Page
+This page is there so that users have the opportunity to send in their own wine review, which is recieved into the admin panel, can be moderated and uploaded by the admin/superuser. 
 
 ## Header and Footer
 The header and footer have been kept the same throughout the site - styled simply with the same font from Font awesome and the spacing and colours all the same. 
@@ -151,7 +158,7 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 ### Database planning
 - I used an Entity Relationship Diagram to plan my database.
-- ![ERD diagram](https://dbdiagram.io/d/679a5bb3263d6cf9a06e72c2)
+- ![ERD diagram]()
 
 ### How to create a database
 1. Navigate to [PostgreSQL](https://dbs.ci-dbs.net/) from Code Institute.
@@ -193,6 +200,7 @@ The header and footer have been kept the same throughout the site - styled simpl
   
 <hr>
 <p><a href="#contents">Back To Top</a></p>
+
 - - - -
 
  ## Design
@@ -209,11 +217,6 @@ The header and footer have been kept the same throughout the site - styled simpl
 
  ![Font](/static/images/font.png)
  
- ## Wireframes
-
- - Wireframes were created with Balsamiq to create clear, visual layouts of the site's design. It helped in identifying potential issues and refining the user interface early on, ensuring a more seamless user experience.
- - The wireframes were developed at the start of the project and then worked on as I went through, to tweak the changes I made to the design and feel of the site
- - They differ slightly to the exact look of the site as In decided to use different images and styles to the wire frame ideas. 
     
 <hr>
 <p><a href="#contents">🍷Back To Top🍷</a></p>
@@ -236,12 +239,12 @@ The header and footer have been kept the same throughout the site - styled simpl
   
 ## CSS Validation
 - W3C CSS style sheet validation link 
-![Css1](/assets/images/rdme-image/cssvalidator.png)
+![Css1](static/images/)
 
 
 ## JS Validation
 - Initial validation
-![JS](/assets/images/rdme-image/jsvalidation.png)
+![JS](static)
 - The test showed that the only warning.  
 
 ### Python validation
@@ -259,9 +262,11 @@ Initial errors were thrown up involving line length of comments and spacing but 
 - I tested the site's responsiveness using multiple devices, including desktops, tablets, and smartphones, to ensure a consistent user experience. By leveraging browser DevTools, I was able to simulate various screen sizes and resolutions, identifying and resolving potential layout issues. Additionally, I conducted real-world testing on physical devices to validate the site's functionality and appearance across different platforms.
 
 
-![Am I Responsive home](/static)
-![Am I Responsive wines](/static)
-![Am I Responsive about](/static)
+![Am I Responsive home](/static/images/responsivehome.png)
+![Am I Responsive wines](/static/images/responsivewines.png)
+![Am I Responsive about](/static/images/responsivewd.png)
+![Am I Responsive about](/static/images/responsivecontact.png)
+![Am I Responsive about](/static/images/responsiveabout1.png)
 
 ## Device Testing
 
@@ -371,7 +376,8 @@ User Story:
 
 ### Bugs
 
-- Out footer text was not wanting to line up and be the same as the rest on the font for the pages. This had to be fixed and debugged. 
+- Admin panel bugs - many throughout the project. 
+- Comments and user reviews not working - 
 
 ### Poor Font for User
 
@@ -382,18 +388,16 @@ User Story:
 
 ### Images  
 
-- Some of the images are still too large - generating a lower lighthouse score than we would have liked. 
+- Some of the images are still too large - generating a lower lighthouse score than we would have liked, with more time i would have liked to edit these to make sure everything was as high as i could make it. 
 
 ### Unknown code fixes in lighthouse
 
-- I have identified some errors and warnings in Lighthouse that could enhance the score. To address these, I will conduct thorough research before my next project to understand and resolve the issues. This proactive approach will help ensure my site meets high performance standards.
+- I have identified some errors and warnings in Lighthouse that could enhance the score. To address these, I will conduct thorough research before future projects to understand and resolve the issues. This proactive approach will help ensure my site meets high performance standards.
+- Images could have been resized, which would have helped the performace score in lighthouse, with more time i would have edited these using tiny.pg to update the score. 
 
 ### Responsiveness
 
-- Responsiveness issues were encountered with the games pages - we would have liked to implement and test these further but ran out of time. 
-- With more time this could have been tested further, the games were responsive but not all the way and with every device. We would have liked to test and implement these better, for enhanced UX. 
-
-
+- Responsiveness issues were encountered with the header, with the dropdown menu changing when changed to a smaller device. This was dealt with at the time.
 
 <hr>
 <p><a href="#contents">Back To Top</a></p>

@@ -103,9 +103,3 @@ def delete_comment(request, comment_id):
     else:
         messages.error(request, 'You can only delete your own comments.')
     return redirect('wine_detail', slug=comment.wine.slug)
-
-
-# def search(request):
-#     query = request.GET.get('q')
-#     results = Wine.objects.filter(name__icontains=query)
-#     return render(request, 'search_results.html', {'results': results})
