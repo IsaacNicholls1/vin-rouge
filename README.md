@@ -158,7 +158,7 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 ### Database planning
 - I used an Entity Relationship Diagram to plan my database.
-- ![ERD diagram](/static/images/dbmodels.png)
+- ![ERD diagram](/static/images/dbdiagram.png)
 
 ### How to create a database
 1. Navigate to [PostgreSQL](https://dbs.ci-dbs.net/) from Code Institute.
@@ -228,14 +228,14 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 ## HTML Validation
 - Initial HTML Validation was performed using the W3C Mark up service and the results can be found in this document. 
-- Any issues were dealt with at the time. 
+- There were two small errors with stray tags, and a span class not closed properly which were dealt with. 
 
-![html1](/static)
-![html2](/static)
-![html3](/static)
-![html4](/static)
-![html5](/static)
-![html6](/static)
+![html1](/static/images/html1.png)
+![html2](/static/images/html2.png)
+![html3](/static/images/html3.png)
+![html4](/static/images/html4.png)
+![html5](/static/images/html5.png)
+
   
 ## CSS Validation
 - W3C CSS style sheet validation link 
@@ -305,7 +305,7 @@ Testing has been done on the following browsers:
 
 ## Testing user stories
 
-I tested our site vs the user stories: 
+I tested my site vs the user stories: 
 
 1. 
 User Story:
@@ -542,7 +542,6 @@ DEBUG mode is disabled in the production environment to enhance security.
 - I used other coding tools and resources such as snippets of code from our previous CI projects to guide and aid when we needed reminding about the correct way to use the code. 
 - The CI walkthrough project 'I think therefore I blog' was used to refer back to to give help during the process. When stuck or needing some advice my first check was with my walkthrough project and the documentation on the LMS learning portal of previous lessons. 
 - Co-pilot in VS code was a very valuable tool in helping to develop code for my project, but also is the fixing, testing and troubleshooting of my code.
-- SITES/GitHub pages used here : 
 - Pexels was used to get some photos, alongside photostock and google images and others were produced by AI generators.  
 
 
@@ -567,6 +566,8 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 - Copilot's ability to generate ideas and offer alternative solutions has fostered continuous improvement, making the development process more efficient and effective. Overall, Copilot's support has significantly contributed to the project's success by enhancing both the technical and user experience aspects.
 - I found it very useful overall and saved me a great deal of time, however I found when using it, it needed a close eye kept on it as it sometimes adds in extra closing tags and code that is sometimes not needed. 
+
+- Co-pilot helped in the testing and de-bugging of my code, when running through validators it was very helpful as any small code issues were picked up on straight away and i could deal with them quickly and efficiantly because of this tool. 
 
 
 
@@ -598,7 +599,7 @@ DEBUG mode is disabled in the production environment to enhance security.
 
 ###  Acknowledgments
 - I would like to thank Emma at CI for her help, encouragement and support and for keeping me on track!
-- I would like to thank Roo and Spencer for all the help they gave us, dealing with tricky problems which we managed to work through, this included the migration to VS code at the start of the project, and also to Roo for the various calls and advice on models, urls and Django framework. 
+- I would like to thank Roo and Spencer for all the help they gave us, dealing with tricky problems which we managed to work through, this included the migration to VS code at the start of the project, and also to Roo for the various calls and advice on models, urls and Django framework, always there to help!  
 - I would like to thanks Code Institute for all the help, courses/teaching and valuable learning they have given us throughout the whole course. 
 
 <hr>
