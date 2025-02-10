@@ -158,7 +158,7 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 ### Database planning
 - I used an Entity Relationship Diagram to plan my database.
-- ![ERD diagram]()
+- ![ERD diagram](/static/images/dbmodels.png)
 
 ### How to create a database
 1. Navigate to [PostgreSQL](https://dbs.ci-dbs.net/) from Code Institute.
@@ -253,10 +253,13 @@ Initial errors were thrown up involving line length of comments and spacing but 
 
 ## Accessibility / Lighthouse
  - I tested the page with lighthouse and the accessibility and performance scores are shown below
-![lighthouse scores home](/static)
-![lighthouse scores about](/static)
-![lighthouse scores contact](/static)
-![lighthouse scores wines](/static)
+![lighthouse scores home](/static/images/lighthousehome1.png)
+- I resized the image after this test, and used tiny.pg to reduce the size which gave me a better score and allowed the page to load quicker. 
+![lighthouse scores home2](/static/images/lighthousehome2.png)
+![lighthouse scores wines](/static/images)
+![lighthouse scores winesdetail](/static/)
+![lighthouse scores about](/static/images/lighthouseabout.png)
+![lighthouse scores contact](/static/images/lighthousecontact.png)
  
 
 ## Responsivity

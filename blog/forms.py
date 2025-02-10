@@ -1,16 +1,8 @@
 from django import forms
-from .models import Review, Comment
+from .models import WineReview
 
 
-class ReviewForm(forms.ModelForm):
+class WineReviewForm(forms.ModelForm):
     class Meta:
-        model = Review
-        fields = [
-            'title', 'author', 'featured_image', 'wine', 'content', 'rating'
-        ]
-
-
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ('content', 'title', 'rating',)
+        model = WineReview
+        fields = ('content', 'title', 'rating', 'featured_image')

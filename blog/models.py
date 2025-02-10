@@ -40,30 +40,7 @@ class Wine(models.Model):
         return self.name
 
 
-class Review(models.Model):
-    wine = models.ForeignKey(
-        Wine, on_delete=models.CASCADE, related_name="reviewed_wine"
-    )
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(unique=True, blank=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="review_posts"
-    )
-    featured_image = CloudinaryField('image', default='placeholder')
-    status = models.IntegerField(choices=STATUS, default=0)
-    content = models.TextField()
-    rating = models.IntegerField(choices=RATING, default=None)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ["-created_on"]
-
-    def __str__(self):
-        return f'{self.wine} - {self.rating}/5'
-
-
-class Comment(models.Model):
+class WineReview(models.Model):
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     title = models.CharField(max_length=200, default="Default Title")
     author = models.ForeignKey(
@@ -75,7 +52,9 @@ class Comment(models.Model):
         Wine, on_delete=models.CASCADE, related_name="comments_wine"
     )
     approved = models.BooleanField(default=False)
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField(
+        'image', default='pexels-brettjordan-18687127_v6rpui'
+    )
     status = models.IntegerField(choices=STATUS, default=0)
     content = models.TextField(default="Leave your review here")
     rating = models.IntegerField(choices=RATING, default=None)
@@ -87,7 +66,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return (
-            f'Comment by {self.author.username}. '
+            f'Wine Review by {self.author.username}. '
             f'This wine - {self.wine} gets {self.rating}/5'
         )
 

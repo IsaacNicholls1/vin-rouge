@@ -3,6 +3,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% if messages %}
+<div class="alert alert-info">
+  <a href="{% static 'pdf/newsletters/madiranregion.pdf' %}" target="_blank">Download Newsletter</a>
+</div>
+{% endif %}
+
 <div class="text-center">
   <h2>About us</h2>
 </div>
@@ -13,11 +19,11 @@
     </div>
     <div class="col-12 container hero-text mt-3">
       <p>We are dedicated to providing detailed reviews, expert insights, and in-depth articles on a diverse range of
-      wines from around the globe. Our mission is to help wine enthusiasts of all levels discover new favorites and
-      deepen their appreciation for the art of winemaking. Whether you're a seasoned connoisseur or just beginning
-      your journey, our platform offers valuable information, tasting notes, and pairing suggestions to enhance your
-      wine experience. Join our community and embark on a delightful adventure through the rich and varied landscape
-      of wine.</p>
+        wines from around the globe. Our mission is to help wine enthusiasts of all levels discover new favorites and
+        deepen their appreciation for the art of winemaking. Whether you're a seasoned connoisseur or just beginning
+        your journey, our platform offers valuable information, tasting notes, and pairing suggestions to enhance your
+        wine experience. Join our community and embark on a delightful adventure through the rich and varied landscape
+        of wine.</p>
     </div>
   </div>
 </div>

@@ -20,9 +20,10 @@ def about_me(request):
                 request,
                 messages.SUCCESS,
                 (
-                    "Request received! Your personal newsletter"
-                    "should be in your"
-                    "inbox soon!"
+                   (
+                       "Thanks for requesting our newsletter, "
+                       "please download below!🍷"
+                   )
                 )
             )
 

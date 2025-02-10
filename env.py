@@ -20,5 +20,8 @@ os.environ.setdefault(
 
 os.environ.setdefault(
         "CLOUDINARY_URL",
-        "cloudinary://445662134364256:ljP2vryq5Um1BIy8CCn6lGe6iTY@dgkiu4va5"
+        (
+            "cloudinary://445662134364256:ljP2vryq5Um1BIy8CCn6lGe6iTY"
+            "@dgkiu4va5?secure=true"
+        )
     )

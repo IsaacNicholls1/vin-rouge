@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
-from .models import Comment, Wine
+from .models import WineReview, Wine
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -27,19 +27,23 @@ class WineDetail(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        comments = Comment.objects.filter(wine=self.object)
-        context['comments'] = comments
-        context['comment_count'] = comments.count()
+        reviews = WineReview.objects.filter(wine=self.object)
+        context['comments'] = reviews
+        context['comment_count'] = reviews.count()
         return context
 
 
-class CommentCreateView(CreateView):
-    model = Comment
-    fields = ['title', "content", 'rating',]  # set the form fields here
-    template_name = 'blog/comment_form.html'
+class WineReviewCreateView(CreateView):
+    model = WineReview
+    fields = [
+        'title',
+        'content',
+        'rating',
+        'featured_image'
+    ]  # set the form fields here
+    template_name = 'blog/winereview_form.html'
     success_url = "/"
-
-# not working, needs looking into
+    context_object_name = 'wine_review'
 
     def form_valid(self, form):
         wine_slug = self.kwargs.get('wine_slug')
@@ -48,8 +52,8 @@ class CommentCreateView(CreateView):
         form.instance.author = self.request.user   # set form author to user.
         messages.success(
             self.request,
-            'Thanks, Your comment has been received and is being moderated, '
-            'it should be posted soon!'
+            'Thanks, Your Wine Review has been received and is being '
+            'moderated, it should be posted soon!'
         )
         return super().form_valid(form)
 
@@ -60,28 +64,28 @@ class CommentCreateView(CreateView):
             kwargs={"slug": self.object.wine.slug}
         )
 
-# comment edit/update view.
+# wine review edit/update view.
 # https://ccbv.co.uk/projects/Django/5.0/django.views.generic.edit/UpdateView/
 
 # ----- Editing reviews
 
 
-class EditCommentView(UpdateView):
-    model = Comment
+class EditWineReviewView(UpdateView):
+    model = WineReview
     fields = ['title', 'content', 'rating']  # specify the fields you want.
-    template_name = 'blog/edit_comment.html'
-    context_object_name = 'comment'
+    template_name = 'blog/edit_winereview.html'
+    context_object_name = 'wine_review'
     success_url = "/"
 
     def get_queryset(self):
-        # Ensure only the author of the comment can edit it
+        # Ensure only the author of the Wine Review can edit it
         queryset = super().get_queryset()
         return queryset.filter(author=self.request.user)
 
     def form_valid(self, form):
         messages.success(
             self.request,
-            'Your comment has been updated and is under moderation.'
+            'Your Wine Review has been updated and is under moderation.'
         )
         return super().form_valid(form)
 
@@ -91,15 +95,15 @@ class EditCommentView(UpdateView):
             'wine_detail', kwargs={'slug': self.object.wine.slug}
         )
 
-# ----- Deleting comments
+# ----- Deleting Eine Reviews
 
 
 @login_required
-def delete_comment(request, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id)
-    if comment.author == request.user:
-        comment.delete()
-        messages.success(request, 'Comment deleted successfully!')
+def delete_comment(request, winereview_id):
+    review = get_object_or_404(WineReview, id=winereview_id)
+    if review.author == request.user:
+        review.delete()
+        messages.success(request, 'Wine Review deleted successfully!')
     else:
-        messages.error(request, 'You can only delete your own comments.')
-    return redirect('wine_detail', slug=comment.wine.slug)
+        messages.error(request, 'You can only delete your own review.')
+    return redirect('wine_detail', slug=review.wine.slug)
