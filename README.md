@@ -230,22 +230,22 @@ The header and footer have been kept the same throughout the site - styled simpl
 - Initial HTML Validation was performed using the W3C Mark up service and the results can be found in this document. 
 - Any issues were dealt with at the time. 
 
-![html1](/assets/images/rdme-image/htmlvalidator.png)
-![html2](/assets/images/rdme-image/htmlvalidator2.png)
-![html3](/assets/images/rdme-image/htmlvalidator3.png)
-![html4](/assets/images/rdme-image/html4.png)
-![html5](/assets/images/rdme-image/html5.png)
-![html6](/assets/images/rdme-image/html6.png)
+![html1](/static)
+![html2](/static)
+![html3](/static)
+![html4](/static)
+![html5](/static)
+![html6](/static)
   
 ## CSS Validation
 - W3C CSS style sheet validation link 
-![Css1](static/images/)
-
+![Css1](static/images/cssvalid.png)
 
 ## JS Validation
 - Initial validation
-![JS](static)
-- The test showed that the only warning.  
+![JS](static/images/jsvalid1.png) 
+![JS](static/images/jsvalid2.png) 
+![JS](static/images/jsvalid3warnings.png) - Some warning remain on this validator, but 
 
 ### Python validation
 [CI Python Linter](https://pep8ci.herokuapp.com/#) was used to validate the python files I created or edited myself.
@@ -253,9 +253,10 @@ Initial errors were thrown up involving line length of comments and spacing but 
 
 ## Accessibility / Lighthouse
  - I tested the page with lighthouse and the accessibility and performance scores are shown below
-![lighthouse scores](/assets/images/rdme-image/lighthouse1.png)
-![lighthouse scores](/assets/images/rdme-image/lighthouse2.png)
-![lighthouse scores](/assets/images/rdme-image/lighthouse3.png)
+![lighthouse scores home](/static)
+![lighthouse scores about](/static)
+![lighthouse scores contact](/static)
+![lighthouse scores wines](/static)
  
 
 ## Responsivity
@@ -304,8 +305,7 @@ User Story:
 --
 
 3.
-User Story:
-![User story3](/static)
+User Story: Please see future implementations
 
 --
 
@@ -355,12 +355,10 @@ User Story:
 --
 
 11.
-User Story:
-![User story11](/static/images/)
+User Story: Please see future implementations
 
 12.
-User Story:
-![User story12](/static)
+User Story: Please see future implementations
 
 13.
 User Story:
@@ -374,30 +372,31 @@ User Story:
 ## Known Bugs
 
 
-### Bugs
+### Bugs/Issues during production
 
-- Admin panel bugs - many throughout the project. 
-- Comments and user reviews not working - 
+- Admin panel bugs, throughout the project I encountered many bugs from the admin panel connectiong to my code, which often thre up errors which were often Integrity errors, these I had to assess, work my way through and solve at the time. Usually i used co-pilot to solve these errors, and although many of them took some time to fix I was always able to get through and solve them myself. 
+
+- Comments not working - My comments section was not working for a while, which was due to my models not linking up correctly with the views.py and urls.py. To fix this again i used co-lpilot to assist me, and also spoke to my Coding coach Roo who was able to point me in a direction of where to look and useful documentation to use. 
 
 ### Poor Font for User
 
-- We felt that the font had to be just right for the website feel and the user, and after some testing we found the perfect one which was not our first option.  
+- I felt that the font had to be just right for the website feel and the user, and after some testing I found the perfect one which was not my first option. I tested a few and eventually settled on one which was correct in style and feel for my site. 
+
+### Responsiveness
+
+- Responsiveness issues were encountered with the header, with the dropdown menu changing when changed to a smaller device. This was dealt with at the time.
 
 
 ## During development and testing, these are the current bugs:
 
 ### Images  
 
-- Some of the images are still too large - generating a lower lighthouse score than we would have liked, with more time i would have liked to edit these to make sure everything was as high as i could make it. 
+- Some of the images are still too large - generating a lower lighthouse score than I would have liked, with more time I would have liked to edit these to make sure everything was as high as I could make it, therefore giving a better user experience all round. 
 
 ### Unknown code fixes in lighthouse
 
 - I have identified some errors and warnings in Lighthouse that could enhance the score. To address these, I will conduct thorough research before future projects to understand and resolve the issues. This proactive approach will help ensure my site meets high performance standards.
 - Images could have been resized, which would have helped the performace score in lighthouse, with more time i would have edited these using tiny.pg to update the score. 
-
-### Responsiveness
-
-- Responsiveness issues were encountered with the header, with the dropdown menu changing when changed to a smaller device. This was dealt with at the time.
 
 <hr>
 <p><a href="#contents">Back To Top</a></p>
@@ -559,20 +558,28 @@ DEBUG mode is disabled in the production environment to enhance security.
 - - - -
 
 # Future features #
-- 
-- Search bar
-- Pop up modal home
-- Filters wine page
-- Profile Page and favourite wines 
-- 
 
+ ## Search Facility ##
 
-- Future features that we would have liked to implement from our user stories
-   User Story:
-   ![User story](/static)
-   User Story:
-   ![User story](/static)
+- Something I would have liked to add to my site to improve functionaloty and user experience, which i ran out of time for was adding in a serach bar, to quickly access any part of the site that the user required. I did all the research for this using co-pilot, so I have the documentation of how to implement it, unfortunately i didnt get the chance to add this into my site. 
+- User Story 11: Searching Wines
+   ![User story11](/static/images/userstory11.png)
 
+ ## Filters Menu ## 
+- I would have liked to implement a Filters menu on my wine page, I feel this would have added great functionality to my site and better UX. Providing users with the option to filter their wines by region, grape variety and rating. Again all the research was done using co-pilot, but unfortunately I wasn't able to implement it on my site. However I plan to add this to my portfolio site. 
+
+ ## Profile Page and Favourite Wines ##
+- In relation to my user story 12, I would like in the future to add a user Profile Page which the user can access, populate with their personal data and also to be able to choose favourite wines which they can 'like' and they will get added to their profile. This would provide my site users a great space to store their favourite wines, allowing for the greater UX and also a better experience overall on the site. 
+ - User Story 12:
+   ![User story12](/static/images/userstory12.png)
+
+ ## Ratings system ## 
+- I currently have a ratings system available for each review and users can give their own rating out of 5 in the comments, however i would like to develop this further in the future to add in functionality that would tally up each wines ratings and give an average score for that wine. This would allow users to see which wines have scored highest when they are looking and searching for their favourite ones.  
+
+## Comment on Reviews ##
+- In accordance with User Story 3, in the future I would like to implement the ability for users to comment on other peoples reviews, so that discussions can be had, but comments should be moderated. 
+- User Story 3:
+   ![User story3](/static/images/userstory3.png)
 
 ###  Acknowledgments
 - I would like to thank Emma at CI for her help, encouragement and support and for keeping me on track!
