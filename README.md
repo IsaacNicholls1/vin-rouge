@@ -242,22 +242,34 @@ The header and footer have been kept the same throughout the site - styled simpl
 ![Css1](static/images/cssvalid.png)
 
 ## JS Validation
-- Initial validation
 ![JS](static/images/jsvalid1.png) 
 ![JS](static/images/jsvalid2.png) 
-![JS](static/images/jsvalid3warnings.png) - Some warning remain on this validator, but 
+![JS](static/images/jsvalid3.png)
 
 ### Python validation
 [CI Python Linter](https://pep8ci.herokuapp.com/#) was used to validate the python files I created or edited myself.
-Initial errors were thrown up involving line length of comments and spacing but these were corrected. 
+- Flake8 was used during production, which meant no errors were present wheh it came to testing at the end, this was a brilliant tool to use during productionb and sped the process up, whilst adhering constantly to PEP8 standards. 
+
+![Python](static/images/blogadminpy.png)
+![Python](static/images/blogformspy.png)
+![Python](static/images/blogmodelspy.png)
+![Python](static/images/blogurlspy.png)
+![Python](static/images/blogviewspy.png)
+![Python](static/images/aboutadminpy.png)
+![Python](static/images/aboutformspy.png)
+![Python](static/images/aboutmodelspy.png)
+![Python](static/images/abouturlspy.png)
+![Python](static/images/aboutviewspy.png)
+
 
 ## Accessibility / Lighthouse
  - I tested the page with lighthouse and the accessibility and performance scores are shown below
 ![lighthouse scores home](/static/images/lighthousehome1.png)
 - I resized the image after this test, and used tiny.pg to reduce the size which gave me a better score and allowed the page to load quicker. 
 ![lighthouse scores home2](/static/images/lighthousehome2.png)
-![lighthouse scores wines](/static/images)
-![lighthouse scores winesdetail](/static/)
+![lighthouse scores wines](/static/images/lighthousewines.png)
+- The wines and winde detail pages scored low in the best practices, this seemed to be due to the cloudinary files not producing https files. This is something to edit and work on for the project. 
+![lighthouse scores winesdetail](/static/images/lighthousewinedetail.png)
 ![lighthouse scores about](/static/images/lighthouseabout.png)
 ![lighthouse scores contact](/static/images/lighthousecontact.png)
  
