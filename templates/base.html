@@ -1,7 +1,8 @@
-
 {% load static %}
 {% url 'index' as home_url %}
 {% url 'about' as about_url %}
+{% url 'contact' as contact_url %}
+{% url 'wine_list' as wine_list %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -51,7 +52,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link
-                          {% if request.path == review_url %}active{%endif%}" aria-current="page"
+                          {% if request.path == wine_list %}active{%endif%}" aria-current="page"
                             href="{% url 'wine_list' %}">Wines</a>
                     </li>
                     <li class="nav-item">
