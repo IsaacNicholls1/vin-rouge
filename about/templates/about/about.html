@@ -3,11 +3,16 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
+<!-- displays newsletter download if user requests it -->
+
 {% if messages %}
 <div class="alert alert-info">
   <a href="{% static 'pdf/newsletters/madiranregion.pdf' %}" target="_blank">Download Newsletter</a>
 </div>
 {% endif %}
+
+<!-- container for about page hero and text -->
 
 <div class="text-center">
   <h2>About us</h2>
@@ -28,6 +33,8 @@
   </div>
 </div>
 
+<!-- Newsletter sign up form -->
+ 
 <div class="row justify-content-center">
   <div class="col-12 col-md-6 my-5">
     <h2>Sign Up to our newsletter for a monthly in-depth look at France's Wine regions!</h2>

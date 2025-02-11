@@ -7,7 +7,7 @@ from django.utils.text import slugify
 STATUS = ((0, "Draft"), (1, "Published"))
 RATING = ((1, "1🍷"), (2, "2🍷"), (3, "3🍷"), (4, "4🍷"), (5, "5🍷"))
 
-
+# Wine model 
 class Wine(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(unique=True, blank=True)
@@ -39,7 +39,7 @@ class Wine(models.Model):
     def __str__(self):
         return self.name
 
-
+# wine review model for users to submit reviews
 class WineReview(models.Model):
     slug = models.SlugField(max_length=100, unique=True, blank=True)
     title = models.CharField(max_length=200, default="Default Title")

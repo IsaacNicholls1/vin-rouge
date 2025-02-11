@@ -1,3 +1,6 @@
+/**
+* Initializes age modal functionality.
+*/
 document.addEventListener('DOMContentLoaded', function () {
     if (!localStorage.getItem('ageVerified')) {
         var ageVerificationModal = new bootstrap.Modal(document.getElementById('ageVerificationModal'));

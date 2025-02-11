@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
-# 'index view' is the home page view.
+# ---- 'index view' is the home page view.
 
 
 def index(request):
@@ -64,15 +64,12 @@ class WineReviewCreateView(CreateView):
             kwargs={"slug": self.object.wine.slug}
         )
 
-# wine review edit/update view.
-# https://ccbv.co.uk/projects/Django/5.0/django.views.generic.edit/UpdateView/
-
-# ----- Editing reviews
+# ----- Editing Wine reviews
 
 
 class EditWineReviewView(UpdateView):
     model = WineReview
-    fields = ['title', 'content', 'rating']  # specify the fields you want.
+    fields = ['title', 'content', 'rating']
     template_name = 'blog/edit_winereview.html'
     context_object_name = 'wine_review'
     success_url = "/"
@@ -95,8 +92,7 @@ class EditWineReviewView(UpdateView):
             'wine_detail', kwargs={'slug': self.object.wine.slug}
         )
 
-# ----- Deleting Eine Reviews
-
+# ----- Deleting Wine Reviews
 
 @login_required
 def delete_comment(request, winereview_id):
