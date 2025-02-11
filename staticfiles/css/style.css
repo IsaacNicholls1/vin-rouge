@@ -1,23 +1,55 @@
-
+/* Styling for the main font */
+:root {
+    --main-font: 'Libre Baskerville', sans-serif;
+}
 
 
 body {
     background-color: #F9FAFC;
+    font-family: var(--main-font);
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: var(--main-font);
     font-size: 1.4rem;
     font-weight: 700;
-    color: #b02929;
+    color: #000000;
+}
+
+.nav {
+    font-family: var(--main-font);
+    background-color: #89B181;
+    color: white;
+    padding: 20px;
+}
+
+
+.footer {
+    font-family: var(--main-font);
+    background-color: #89B181;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h5 {
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #ffffff;
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #89B181;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #89B181;
+}
+
+.img-fluid {
+    max-width: 30%;
+    height: 30%;
 }
 
 .main-bg {
@@ -25,8 +57,69 @@ body {
 }
 
 .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #94B88C;
+    margin-bottom: 20px;
+}
+
+.container {
     border: none;
-    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #94B88C;
+    margin-bottom: 20px;
+}
+
+.container3 {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-family: var(--main-font);
+    background-color: #330835;
+    color: white;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    background-color: #330835;
+    border-color: #fefefe;
+}
+
+.btn-secondary {
+    background-color: #330835;
+    border-color: #6c757d;
+    width: 150px;
+}
+
+.btn:hover,
+.btn-secondary:hover {
+    color: white;
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
 
 .image-container {
@@ -52,6 +145,51 @@ body {
     text-transform: uppercase;
 }
 
+/* General styling for the hero section */
+.index {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Styling for the logo image */
+.index .logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Styling for the main title */
+.index .main-title {
+    font-family: "Libre Baskerville", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Styling for the tagline */
+.index .tagline {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* Styling for the main description */
+.index .main-description {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.6;
+}
+
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -62,9 +200,12 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #632C33;
     color: white;
     position: relative;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 200;
+    padding: 50px 10px 20px 30px;
 }
 
 .masthead-image {
@@ -79,7 +220,7 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #515152;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -115,14 +256,21 @@ body {
 
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
+    font-family: var(--main-font);
+    background-color: #632C33;
     color: #fff;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    border-radius: 3px;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #445261;
+    color: #000000;
 }
 
 .link {
@@ -159,5 +307,39 @@ body {
 }
 
 .approval {
-    color: rgb(222, 146, 168);
+    color: #515152;
 }
+
+.ReviewForm {
+    font-family: "Libre Baskerville", serif;
+    font-size: 1.5rem;
+    background-color: #89B181;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-title {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+
+.carousel-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-image {
+    height: 500px;
+    object-fit: cover;
+}
+
+
+
+
+
+
