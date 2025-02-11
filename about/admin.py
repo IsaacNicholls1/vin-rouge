@@ -7,11 +7,13 @@ from django_summernote.admin import SummernoteModelAdmin
 class AboutAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
 
+# Register Newsletter request to admin panel 
 
 @admin.register(NewsletterRequest)
 class NewsletterRequestAdmin(admin.ModelAdmin):
     list_display = ('read', 'name', 'email')
 
+# Register wine review submission model to admin panel 
 
 @admin.register(WineReviewSubmission)
 class WineReviewSubmissionAdmin(admin.ModelAdmin):
@@ -21,7 +23,6 @@ class WineReviewSubmissionAdmin(admin.ModelAdmin):
     )
     search_fields = ['name', 'wine_name']
     list_filter = ('submitted_on',)
-
 
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):

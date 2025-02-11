@@ -1,10 +1,11 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
+# Create models here.
 
 """
 About model - to store information about the site owner
+
 """
 
 
@@ -17,6 +18,7 @@ class About(models.Model):
     def __str__(self):
         return self.title
 
+# NewsletterRequest model - to store newsletter requests
 
 class NewsletterRequest(models.Model):
     name = models.CharField(max_length=200)
@@ -26,6 +28,7 @@ class NewsletterRequest(models.Model):
     def __str__(self):
         return f"Newletter request from {self.name}"
 
+# WineReviewSubmission model - to store wine reviews
 
 class WineReviewSubmission(models.Model):
     name = models.CharField(max_length=100)
@@ -39,6 +42,7 @@ class WineReviewSubmission(models.Model):
     def __str__(self):
         return f"Review by {self.name} for {self.wine_name}"
 
+# Newsletter model - to store newsletters in the admin panel 
 
 class Newsletter(models.Model):
     subject = models.CharField(max_length=200)

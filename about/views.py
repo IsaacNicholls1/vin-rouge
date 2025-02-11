@@ -3,14 +3,9 @@ from django.contrib import messages
 from .forms import NewsletterForm, WineReviewSubmissionForm
 from .models import About
 
+# view for the about page - Newsletter model request
 
 def about_me(request):
-    """
-    Renders the most recent info on the website author,
-    and allows users to request
-    a newsletter.
-    Displays an instance of :model:`about.About`.
-    """
 
     if request.method == "POST":
         newsletter_form = NewsletterForm(data=request.POST)
@@ -40,7 +35,8 @@ def about_me(request):
     )
 
 
-# Create your views here.
+# view for the contact page - WineReviewSubmission model request
+
 def contact(request):
 
     if request.method == "POST":

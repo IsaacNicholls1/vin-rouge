@@ -606,9 +606,15 @@ DEBUG mode is disabled in the production environment to enhance security.
 - My original thought was to include a region model, to make it easier for users to differentiate between wines and sort by region. This is something i would implement in the future. 
 
 ## Comment on Reviews ##
-- In accordance with User Story 3, in the future I would like to implement the ability for users to comment on other peoples reviews, so that discussions can be had, but comments should be moderated. This was originally planned as a separate model, which is the way I would like to impolement it in the future. I would also like the users to be able to leave their own reviews on a separate page in the future. 
+- In accordance with User Story 3, in the future I would like to implement the ability for users to comment on other peoples reviews, so that discussions can be had, but comments should be moderated. This was originally planned as a separate model, which is the way I would like to impolement it in the future. 
 - User Story 3:
    ![User story3](/static/images/userstory3.png)
+
+## Community wine review page ##
+- I would as like a future feature to implement my contact page into a community review page, where users can leave their personal wine reviews and it can be a community hub. 
+
+## Newsletter sign -up email ##
+- Currently users can leave their name and email in order to get a newsletter from the site, which is a spotlight on a particular region. In the future implementations, instead of this being sent as user feedback and a link to click, I would like to set up a system where the user will automatically recieve the newsletter to their inbox, and therefore be signed up to our mailing list. 
 
 ###  Acknowledgments
 - I would like to thank Emma at CI for her help, encouragement and support and for keeping me on track!
