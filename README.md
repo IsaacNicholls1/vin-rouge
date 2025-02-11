@@ -226,6 +226,12 @@ The header and footer have been kept the same throughout the site - styled simpl
 
 # Testing #
 
+## Manual testing
+- Manual testing was carried out on the local and deployed sites.
+
+![manualtesting](/static/images/manualtesting1.png)
+![manualtesting](/static/images/manualtesting2.png)
+
 ## HTML Validation
 - Initial HTML Validation was performed using the W3C Mark up service and the results can be found in this document. 
 - There were two small errors with stray tags, and a span class not closed properly which were dealt with. 
@@ -542,6 +548,9 @@ DEBUG mode is disabled in the production environment to enhance security.
 - I used other coding tools and resources such as snippets of code from our previous CI projects to guide and aid when we needed reminding about the correct way to use the code. 
 - The CI walkthrough project 'I think therefore I blog' was used to refer back to to give help during the process. When stuck or needing some advice my first check was with my walkthrough project and the documentation on the LMS learning portal of previous lessons. 
 - Co-pilot in VS code was a very valuable tool in helping to develop code for my project, but also is the fixing, testing and troubleshooting of my code.
+- For reference i looked at a couple of example projects which were provided to me by our tutor, these projects were : 
+- https://github.com/alexcurnow96/Task-Nest-Project  - Readme advice. 
+- https://github.com/elamont174/ey-up-me-pup  - for code examples and Readme advice. 
 - Pexels was used to get some photos, alongside photostock and google images and others were produced by AI generators.  
 
 
@@ -592,8 +601,12 @@ DEBUG mode is disabled in the production environment to enhance security.
  ## Ratings system ## 
 - I currently have a ratings system available for each review and users can give their own rating out of 5 in the comments, however i would like to develop this further in the future to add in functionality that would tally up each wines ratings and give an average score for that wine. This would allow users to see which wines have scored highest when they are looking and searching for their favourite ones.  
 
+## Region Model ##
+
+- My original thought was to include a region model, to make it easier for users to differentiate between wines and sort by region. This is something i would implement in the future. 
+
 ## Comment on Reviews ##
-- In accordance with User Story 3, in the future I would like to implement the ability for users to comment on other peoples reviews, so that discussions can be had, but comments should be moderated. 
+- In accordance with User Story 3, in the future I would like to implement the ability for users to comment on other peoples reviews, so that discussions can be had, but comments should be moderated. This was originally planned as a separate model, which is the way I would like to impolement it in the future. I would also like the users to be able to leave their own reviews on a separate page in the future. 
 - User Story 3:
    ![User story3](/static/images/userstory3.png)
 
